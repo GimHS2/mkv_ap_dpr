@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <div style='font: bold 14px; color:blue'>
+			Order is placed successfully.
+		<br></div>
+
+        <div style='font: bold 14px;'><br>Order Information:<br></div>
+			<ul style='font: 11px; margin: 0; padding:0; padding-left: 20px;'>
+				<li style='list-style: none;'>Sales Order Number: %{orderNumber}%
+				<li style='list-style: none;'>Sales Organization: %{organizationCode}%
+				<li style='list-style: none;'>Order Amount: %{_orderValue}%
+				<li style='list-style: none;'>Confirmed Amount: %{confirmedOrderValue}%
+				<li style='list-style: none;'>RDD: %{inDate}%
+				<li style='list-style: none;'>Sold-To Party: [%{soldPartyCode}%] %{soldPartyName}%
+				<li style='list-style: none;'>Ship-To Party: [%{shipPartyCode}%] %{shipPartyName}%
+				<li style='list-style: none;'>Created User : %{createUser}%
+			</ul>
+    </body>
+</html>

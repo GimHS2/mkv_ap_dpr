@@ -1,0 +1,22 @@
+<html>
+	<body>
+		<div style='font: bold 14px; color:red'>
+			RDD Failure occurred for Order Key: '%{orderKey}%'
+		<br>
+			%{message}%
+		<br>
+		<br>
+			Please check following RDD Failure case.
+		<br></div>
+	<div style='font: bold 14px;'><br>RDD Failure information:<br></div>
+		<ul style='font: 11px; margin: 0; padding:0; padding-left: 20px;'>
+			<li style='list-style: none;'>requestedDateTime : %{requestedDateTime}%
+			<li style='list-style: none;'>orderKey : %{orderKey}%
+			<li style='list-style: none;'>portalUser : %{portalUser}%
+			<li style='list-style: none;'>customerShipTo : %{customerShipTo}%
+			<li style='list-style: none;'>salesOrg : %{salesOrg}%
+			<li style='list-style: none;'>distChannel : %{distChannel}%
+			<li style='list-style: none;'>division : %{division}%
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,292 @@
+# change caption -> td
+
+
+
+################################################################################
+#	Select
+#		.CLASSNAME.format
+#		.CLASSNAME.filterListingLevel
+#		.CLASSNAME.fullListingLevel
+#		.CLASSNAME.nullValueKey
+#		.CLASSNAME.sort
+################################################################################
+Select.com.irt.rbm.sys.CategoryCode.nullValueKey			=	MSG_PUB_SELECT@FIELD_CATEGORY{0}
+Select.com.irt.rbm.sys.CurrencyCode.format					=	$H{symbol}
+Select.com.irt.rbm.sys.CurrencyCode.sort					=	symbol
+Select.com.irt.rbm.sys.GeneralCode.format					=	$H{name}
+Select.com.irt.rbm.sys.ICategoryCode.nullValueKey			=	MSG_PUB_SELECT@FIELD_ICATEGORY{0}
+Select.com.irt.rbm.sys.TimeZone.format						=	$H{name}
+Select.com.irt.rbm.sys.TimeZone.sort						=	displaySequence
+Select.com.irt.rbm.ecs.Brand.nullValueKey					=	MSG_PUB_SELECT@FIELD_ECS_BRAND{0}
+Select.com.irt.rbm.ecs.EventType.format						=	$H{name}
+Select.com.irt.rbm.ecs.EventType.sort						=	code
+Select.com.irt.rbm.ecs.PromotionType.format					=	$H{name}
+Select.com.irt.rbm.ecs.PromotionType.sort					=	code
+Select.com.irt.rbm.ecs.Season.nullValueKey					=	MSG_PUB_SELECT@FIELD_ECS_SEASON
+Select.com.irt.rbm.ecs.StoreAttrArea.format					=	$H{name}
+Select.com.irt.rbm.ecs.StoreAttrArea.nullValueKey			=	MSG_PUB_SELECT@FIELD_ECS_STOREATTR_AREA{0}
+Select.com.irt.rbm.ecs.StoreAttrComarea.format				=	$H{name}
+Select.com.irt.rbm.ecs.StoreAttrFactor1.format				=	$H{name}
+Select.com.irt.rbm.ecs.StoreAttrFactor2.format				=	$H{name}
+Select.com.irt.rbm.ecs.StoreAttrScale.format				=	$H{name}
+Select.com.irt.rbm.ecs.StoreAttrStatus.format				=	$H{name}
+Select.com.irt.rbm.pds.Attr.format							=	$H{attrName}
+Select.com.irt.rbm.pds.Channel.format						=	$H{name}
+Select.com.irt.rbm.pds.Channel.nullValueKey					=	MSG_PUB_SELECT@FIELD_PDS_CHANNEL{0}
+Select.com.irt.rbm.pds.UDG.format							=	$H{uDGName}
+Select.com.irt.rbm.pds.UDG.sort								=	uDGName
+Select.com.irt.rbm.pds.ReportCategoryCode.nullValueKey		=	MSG_PUB_SELECT@FIELD_PDS_REPORT_CATEGORY{0}
+Select.com.irt.rbm.pds.Retail.format						=	$H{retailName}
+Select.com.irt.rbm.pds.Retail.nullValueKey					=	MSG_PUB_SELECT@FIELD_RETAIL
+Select.com.irt.rbm.pds.SalesOrganization.format				=	$H{name}
+Select.com.irt.rbm.pds.SalesOrganization.nullValueKey		=	MSG_PUB_SELECT@FIELD_PDS_SALESORG{0}
+Select.com.irt.rbm.pds.SalesUser.format						=	$H{salesUserName}
+Select.com.irt.rbm.pds.SalesUser.nullValueKey				=	MSG_PUB_SELECT@FIELD_PDS_SALESUSER
+Select.com.irt.rbm.pds.SalesUser.sort						=	salesUserName
+Select.com.irt.rbm.pds.Store.format							=	$H{storeName}
+Select.com.irt.rbm.pds.Store.nullValueKey					=	MSG_PUB_SELECT@FIELD_STORE
+
+
+################################################################################
+#	SelectCategory
+################################################################################
+SelectCategory.com.irt.rbm.sys.CategoryCode.condition		=	classCode=1|2|3
+SelectCategory.com.irt.rbm.sys.CategoryCode.format			=	$f{decode(classCode,1,,2,&nbsp;&nbsp;,&nbsp;&nbsp;&nbsp;&nbsp;)}$H{name}
+SelectCategory.com.irt.rbm.sys.ICategoryCode.condition		=	classCode=1|2|3
+SelectCategory.com.irt.rbm.sys.ICategoryCode.format			=	$f{decode(classCode,1,,2,&nbsp;&nbsp;,&nbsp;&nbsp;&nbsp;&nbsp;)}$H{name}
+SelectCategory.com.irt.rbm.ecs.Brand.condition				=	classCode=1|2|3
+SelectCategory.com.irt.rbm.ecs.Brand.format					=	$f{decode(classCode,1,,2,&nbsp;&nbsp;,&nbsp;&nbsp;&nbsp;&nbsp;)}$H{name}
+
+
+################################################################################
+#	defaultShowCount
+#	defaultShowCountList
+#	defaultShowIndexCount
+################################################################################
+defaultShowCount						=	%DEFAULTSHOWCNT%
+defaultShowCountList					=	10,15,20,30,40,50,100,120,150
+
+
+################################################################################
+#	jsp.public.focusOnLoad
+################################################################################
+jsp.public.focusOnLoad					=	true
+
+
+################################################################################
+#	jsp.contentGroup
+#		jsp.contentGroup.TYPE.openTag
+#		jsp.contentGroup.TYPE.description
+#		jsp.contentGroup.TYPE.closeTag
+################################################################################
+jsp.contentGroup.list.openTag			=	<div class='content_group ${styleClass,list_content}' id='content_${groupId}'  data-description='${description,}' ${style=':style;'}>
+jsp.contentGroup.list.description		=	<table cellspacing='0' cellpadding='0'><tr><td><span class='content_group_description' style='fond-weight: bold;'><image src='images/ico_caption.gif'></image>${:description,${<span class='caption_msg'>:message;</span>};${<span class='caption_msg'>:message;</span>}</span></td></tr>}</table>
+jsp.contentGroup.list.closeTag			=	</div>
+jsp.contentGroup.search.openTag			=	<div class='content_group ${styleClass,search_content}' id='content_${groupId}' ${style=':style;'}>
+jsp.contentGroup.search.closeTag		=	</div>
+jsp.contentGroup.content.openTag		=	<div class='content_group ${styleClass,info_content}' id='content_${groupId}' ${style=':style;'}>
+jsp.contentGroup.content.closeTag		=	</div>
+jsp.contentGroup.tabpage.openTag		=	<div id='tabpage_${groupId}' ${class='content_group :styleClass;'} data-description='${description,}' style='display: none; ${style}'>
+jsp.contentGroup.tabpage.description	=	${<span class='tab'>:description;</span>}
+jsp.contentGroup.tabpage.closeTag		=	</div>
+jsp.contentGroup.tabpane.openTag		=	<div id='tabpane_${groupId}' ${class='content_group :styleClass;'}  ${style=':style;'}>
+jsp.contentGroup.tabpane.closeTag		=	</div>
+jsp.contentGroup.tabs-sub.openTag		=	<div id='tabs-${groupId}' ${class='content_group :styleClass;'}  ${style=':style;'}>
+jsp.contentGroup.tabs-sub.closeTag		=	</div>
+jsp.contentGroup.tab-content.openTag	=	<h3>$H{description}</h3>
+jsp.contentGroup.fieldset.openTag		=	<fieldset id='fieldset_${groupId}' ${class=':styleClass;'} ${style=':style;'}>${<legend>:description;</legend>}
+jsp.contentGroup.fieldset.closeTag		=	</fieldset>
+jsp.contentGroup.span.openTag			=	<span class='content_group ${styleClass,:groupId;_content}' id='content_${groupId}' data-description='${description,}' ${style=':style;'}>
+jsp.contentGroup.span.closeTag			=	</span>
+
+
+################################################################################
+#	jsp.button
+#		jsp.button.TYPE.href
+#		jsp.button.TYPE.image
+#	jsp.ibutton
+#		jsp.ibutton.TYPE.href
+#		jsp.ibutton.TYPE.image
+################################################################################
+jsp.button.cancel.styleClass			=	btn btn-secondary w110
+jsp.button.close.href					=	JavaScript:windowClose();
+jsp.button.close.href.reload			=	JavaScript:windowClose(true);
+jsp.button.close.icon					=	images/ico_close.png
+jsp.button.confirm.styleClass			=	btn btn-primary w110
+jsp.button.select.href					=	JavaScript:selectReq();
+jsp.button.select.image					=	images/btn_select.gif
+jsp.button.regist.href					=	JavaScript:registReq();
+jsp.button.modify.href					=	JavaScript:modifyReq();
+jsp.button.modify.icon					=	images/ico_edit.png
+jsp.button.delete.href					=	JavaScript:deleteReq();
+jsp.button.delete.icon					=	images/ico_delete.png
+jsp.button.download.href				=	JavaScript:downloadReq();
+jsp.button.download.icon				=	images/ico_download.png
+jsp.button.upload.href					=	JavaScript:uploadReq();
+jsp.button.upload.icon					=	images/ico_upload.png
+jsp.button.return.styleClass			=	btn-text
+jsp.button.return.icon					=	images/ico_arrow_left_on.png
+jsp.button.save.buttonType				=	submit
+jsp.button.save.styleClass				=	btn btn-primary
+jsp.button.save.icon					=	images/ico_save_white.png
+jsp.button.search.buttonType			=	submit
+jsp.button.search.styleClass			=	btn btn-primary
+jsp.button.search.icon					=	images/ico_search_white.png
+jsp.button.s_button.styleClass			=	btn-small btn-secondary
+jsp.button.reset.styleClass				=	btn btn-secondary
+jsp.ibutton.calendar.href				=	JavaScript:openCalendar("${element}");
+jsp.ibutton.calendar.image				=	images/ico_calendar.gif
+jsp.ibutton.select.image				=	images/ico_select.gif
+
+
+################################################################################
+#	jsp.script
+#		jsp.script.modified
+#		jsp.script.check.mandatory
+#		jsp.script.check.format.date
+#		jsp.script.check.format.number_i
+#		jsp.script.check.format.number_f
+#		jsp.script.check.number_range
+#		jsp.script.multisel.blur
+#		jsp.script.multisel.focus
+#	jsp.styleClass
+#		jsp.styleClass.input.date_ymd
+#		jsp.styleClass.input.readonly
+#		jsp.styleClass.input.mandatory
+#		jsp.styleClass.input.optional
+#		jsp.styleClass.input.TYPE.readonly
+#		jsp.styleClass.input.TYPE.mandatory
+#		jsp.styleClass.input.TYPE.optional
+#		jsp.styleClass.title.mandatory
+#		jsp.styleClass.title.optional
+################################################################################
+#jsp.script.modified						=	JavaScript:Field.modified(this);
+jsp.script.check.mandatory				=	if( !Field.checkMandatory(${element}) ) return false;
+jsp.script.check.date.format			=	if( !Field.checkDateFormat(${element}) ) return false;
+jsp.script.check.number.format_i		=	if( !Field.checkNumberFormat(${element}, false, false, true) ) return false;
+jsp.script.check.number.format_f		=	if( !Field.checkNumberFormat(${element}, false, true, true) ) return false;
+jsp.script.check.number.range			=	if( !Field.checkNumberRange(${element}, false, ${minValue,null}, ${maxValue,null}, ${rangeType,null}) ) return false;
+jsp.script.multisel.blur				=	JavaScript:LevelField.blur(this);
+jsp.script.multisel.focus				=	JavaScript:LevelField.focus(this);
+jsp.script.tabs.init					=	$("#${element}").tabs();
+jsp.styleClass.button.primary			=	btn btn-primary
+jsp.styleClass.button.primary-w135		=	btn btn-primary w135
+jsp.styleClass.button.secondary			=	btn btn-secondary
+jsp.styleClass.button.seccondary-w135	=	btn btn-secondary w135
+jsp.styleClass.input.date_ymd			=	length_date_ymd
+jsp.styleClass.input.readonly			=	input-field readonly
+jsp.styleClass.input.mandatory			=	input-field
+jsp.styleClass.input.optional			=	input-field
+jsp.styleClass.input.check.mandatory	=	content_m_dis
+jsp.styleClass.input.check.optional		=	content_o_dis
+jsp.styleClass.input.date.readonly		=	input-field date readonly
+jsp.styleClass.input.date.mandatory		=	input-field date
+jsp.styleClass.input.date.optional		=	input-field date
+jsp.styleClass.input.radio.mandatory	=	content_m_dis
+jsp.styleClass.input.radio.optional		=	content_o_dis
+jsp.styleClass.title.mandatory			=	mandatory
+jsp.styleClass.title.optional			=	optional
+
+
+################################################################################
+#	jsp.oss.OSSMaster.condition.categoryType
+#	jsp.oss.OSSInv.condition.categoryType
+#	jsp.oss.OSSInvSummary.condition.categoryType
+#	jsp.oss.OSSOrder.condition.categoryType
+#	jsp.oss.OSSOrderSummary.condition.categoryType
+#	jsp.oss_order_list.usingCheckbox
+################################################################################
+jsp.oss.OSSMaster.condition.categoryType			=	C
+jsp.oss.OSSInv.condition.categoryType				=	C
+jsp.oss.OSSInvSummary.condition.categoryType		=	C
+jsp.oss.OSSOrder.condition.categoryType				=	C
+jsp.oss.OSSOrderSummary.condition.categoryType		=	C
+jsp.oss_order_list.usingCheckbox					=	Y
+
+
+################################################################################
+#	jsp.cpfr.CPFRItem.condition.categoryType
+#	jsp.cpfr.CPFRItemDaily.condition.categoryType
+#	jsp.cpfr.CPFRKPI.condition.categoryType
+#	jsp.cpfr.CPFRKPIData.condition.categoryType
+#	jsp.cpfr.CPFRKPIDataSummary.condition.categoryType
+#	jsp.cpfr.CPFROrder
+#		.condition.categoryType: B, C, K
+#		.condition.conditionType
+#			: STOCKQTY_EMN, STOCKQTY_EMX, STOCKDAYS_EMN, STOCKDAYS_EMX, EXPSTOCKDAYS_EMN, EXPSTOCKDAYS_EMX, CHKSTOCKDAYS_EMN, CHKSTOCKDAYS_EMX
+#			: ORDERQTY_EMN, ORDERQTY_EMX
+#		.condition.usingPromotionMST: Y, N
+#		.loadingType: ALL, EACH
+#	jsp.cpfr.CPFROrderSummary.condition.categoryType
+#	jsp.cpfr.CPFRSFCDayIndex.days
+#	jsp.cpfr_itemdaily_list.linkToOSSMaster: Y, N
+#	jsp.cpfr_kpichart_trend.columnCount
+#	jsp.cpfr_order_list.usingCheckbox: Y, N
+#	jsp.include_cpfr_kpianal_cond_detail.linkHelp: Y, N
+################################################################################
+jsp.cpfr.CPFRItem.condition.categoryType			=	C
+jsp.cpfr.CPFRItemDaily.condition.categoryType		=	C
+jsp.cpfr.CPFRKPI.condition.categoryType				=	C
+jsp.cpfr.CPFRKPIData.condition.categoryType			=	C
+jsp.cpfr.CPFRKPIDataSummary.condition.categoryType	=	C
+jsp.cpfr.CPFROrder.condition.categoryType			=	C
+jsp.cpfr.CPFROrder.condition.usingPromotionMST		=	Y
+jsp.cpfr.CPFROrder.loadingType						=	EACH
+jsp.cpfr.CPFROrderSummary.condition.categoryType	=	C
+jsp.cpfr_order_list.usingCheckbox					=	Y
+jsp.cpfr_itemdaily_list.linkToOSSMaster				=	Y
+jsp.include_cpfr_kpianal_cond_detail.linkHelp		=	Y
+
+
+################################################################################
+#	jsp.pds.PDSPABestWorst
+#		.rank
+#		.rankList
+#	jsp.pdspa_chart_trend.columnCount
+################################################################################
+
+
+################################################################################
+#	tags.HierarchyCodeLinkTag
+#		.separate
+#		.suffix
+################################################################################
+tags.HierarchyCodeLinkTag.separate		=	\u2225
+tags.HierarchyCodeLinkTag.suffix		=	&nbsp;\u25bc
+
+
+################################################################################
+#	tags.anal.ConditionDateValueTag.format
+################################################################################
+tags.anal.ConditionDateValueTag.format		=	$f{com.irt.rbm.anal.DateValueFormat(dateValueKey)}
+
+
+################################################################################
+#	tags.pds.ConditionTag
+#		.TYPE.format
+#		.TYPE.lastLevel
+#		.TYPE.sort
+#		.TYPE.usingAxisCodeLevel
+#		.attrKindCode.selectedOnly
+#		.attrValueCode.categoryCLevel
+#		.attrValueCode.categoryKLevel
+#		.salesUserId.filteredBySalesOrgValue
+################################################################################
+tags.pds.ConditionTag.areaCode.usingAxisCodeLevel				=	true
+tags.pds.ConditionTag.attrKindCode.format						=	$H{attrName}
+tags.pds.ConditionTag.attrKindCode.selectedOnly					=	true
+tags.pds.ConditionTag.attrValueCode.format						=	$H{attrName}
+tags.pds.ConditionTag.brandCode.usingAxisCodeLevel				=	true
+tags.pds.ConditionTag.categoryCodeC.usingAxisCodeLevel			=	true
+tags.pds.ConditionTag.categoryCodeK.usingAxisCodeLevel			=	true
+tags.pds.ConditionTag.channelCode.usingAxisCodeLevel			=	true
+tags.pds.ConditionTag.gtin.format								=	[${gtin}] $H{itemName}
+tags.pds.ConditionTag.itemUDGCode.format						=	$H{uDGName}
+tags.pds.ConditionTag.reportCategoryCode.usingAxisCodeLevel		=	true
+tags.pds.ConditionTag.retailGln.format							=	$H{retailName}
+tags.pds.ConditionTag.retailGln.sort							=	displaySequence
+tags.pds.ConditionTag.salesOrganizationCode.usingAxisCodeLevel	=	true
+tags.pds.ConditionTag.salesUserId.filteredBySalesOrgValue		=	true
+tags.pds.ConditionTag.skuCode.format							=	$H{skuName}
+tags.pds.ConditionTag.skuUDGCode.format							=	$H{uDGName}
+tags.pds.ConditionTag.storeGln.format							=	[${storeGln}] $H{storeName}

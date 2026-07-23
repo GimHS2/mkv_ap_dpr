@@ -1,0 +1,28 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type"  content="text/html charset=UTF-8;" />
+</head>
+<body>
+	<div style='font: bold 14px; color: blue'>
+		<span>%{MSG_DPR_ORDREV_EMAIL_STARTWORD}%</span>
+		<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;<span>%{MSG_DPR_ORDREV_EMAIL_STARTMESSAGE}%</span>
+		<br/>
+	</div>
+
+	<ul style='font: 11px; margin: 0; padding: 0; padding-left: 20px;'>
+		<li style='list-style: none;'>%{FIELD_DPR_ORDREV_REQ_USER_CODE}%: %{soldPartyCode}%</li>
+		<li style='list-style: none;'>%{FIELD_DPR_ORDREV_USERNAME}%: %{userName}%</li>
+		<li style='list-style: none;'>%{FIELD_DPR_ORDREV_ORDERNUMBER}%: %{parentOrderNumber}%</li>
+		<li style='list-style: none;'>%{FIELD_DPR_ORDREV_HEADWORD}%: %{reviseHelpTypeTitle}%</li>
+		<li style='list-style: none;'>%{FIELD_DPR_ORDREV_EMAIL}%: %{revHbrdEmail}%</li>
+		<li style='list-style: none;'>%{FIELD_DPR_ORDREV_CONTENT}%: %{revHbrdContent}%</li>
+	</ul>
+	<br/>
+	<div style="display: none; max-height: 0px; overflow: hidden;">START_DETAIL_LINES</div>
+	<br/>
+	<div>
+		%{detailLinesHtml}%
+	</div>
+</body>
+</html>

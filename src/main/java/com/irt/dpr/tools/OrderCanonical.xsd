@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="JnJPPO2Canonical"><xs:complexType><xs:sequence>
+		<xs:element name="TransportHeader"><xs:complexType><xs:sequence>
+			<xs:element name="CanonicalName"/>
+			<xs:element name="CanonicalVersion"/>
+			<xs:element name="BusinessManagerID" minOccurs="0"/>
+			<xs:element name="SenderID"/>
+			<xs:element name="ReceiverID"/>
+			<xs:element name="EDIDocumentType" minOccurs="0"/>
+		</xs:sequence></xs:complexType></xs:element>
+		<xs:element name="Order"><xs:complexType><xs:sequence>
+			<xs:element name="OrderHeader"><xs:complexType><xs:sequence>
+				<xs:element name="DocumentType" minOccurs="0"/>
+				<xs:element name="SalesOrganisation" minOccurs="0"/>
+				<xs:element name="RequestedDeliveryDate" minOccurs="0"/>
+				<xs:element name="DateType" minOccurs="0"/>
+				<xs:element name="PurchaseOrderDate" minOccurs="0"/>
+				<xs:element name="PurchaseOrderNumber" minOccurs="0"/>
+				<xs:element name="PurchaseOrderMethods" minOccurs="0"/>
+				<xs:element name="DistributionChannel" minOccurs="0"/>
+				<xs:element name="Division" minOccurs="0"/>
+				<xs:element name="DeliveryBlock" minOccurs="0"/>
+				<xs:element name="PurchaserName" minOccurs="0"/>
+				<xs:element name="ShipCondition" minOccurs="0"/>
+				<xs:element name="Currency" minOccurs="0"/>
+				<xs:element name="TermsOfPaymentKey" minOccurs="0"/>
+			</xs:sequence></xs:complexType></xs:element>
+			<xs:element name="OrderPartner"><xs:complexType><xs:sequence>
+				<xs:element name="Partner" maxOccurs="unbounded"><xs:complexType><xs:sequence>
+					<xs:element name="PartnerRole"/>
+					<xs:element name="PartnerCode"/>
+					<xs:element name="UnloadingPoint"/>
+				</xs:sequence></xs:complexType></xs:element>
+			</xs:sequence></xs:complexType></xs:element>
+			<xs:element name="OrderItems"><xs:complexType><xs:sequence>
+				<xs:element name="Item" maxOccurs="unbounded"><xs:complexType><xs:sequence>
+					<xs:element name="LineNumber"/>
+					<xs:element name="MaterialNumber" minOccurs="0"/>
+					<xs:element name="Quantity"/>
+					<xs:element name="SalesUnit" minOccurs="0"/>
+					<xs:element name="UnitOfMeasure" minOccurs="0"/>
+					<xs:element name="EANItemCode" minOccurs="0"/>
+					<xs:element name="CustomerItemCode" minOccurs="0"/>
+					<xs:element name="ItemNumber" minOccurs="0"/>
+					<xs:element name="NetControlCode" minOccurs="0"/>
+				</xs:sequence></xs:complexType></xs:element>
+			</xs:sequence></xs:complexType></xs:element>
+			<xs:element name="OrderSchedules"><xs:complexType><xs:sequence>
+				<xs:element name="ItemSchedule" maxOccurs="unbounded"><xs:complexType><xs:sequence>
+					<xs:element name="LineNumber"/>
+					<xs:element name="RequestedDeliveryDate" minOccurs="0"/>
+					<xs:element name="DateType" minOccurs="0"/>
+					<xs:element name="Quantity" minOccurs="0"/>
+				</xs:sequence></xs:complexType></xs:element>
+			</xs:sequence></xs:complexType></xs:element>
+			<xs:element name="OrderCondition" minOccurs="0"><xs:complexType><xs:sequence>
+				<xs:element name="ItemCondition" maxOccurs="unbounded"><xs:complexType><xs:sequence>
+					<xs:element name="LineNumber"/>
+					<xs:element name="ConditionType" minOccurs="0"/>
+					<xs:element name="ConditionValue" minOccurs="0"/>
+					<xs:element name="ConditionUnit" minOccurs="0"/>
+					<xs:element name="ConditionCurrency" minOccurs="0"/>
+				</xs:sequence></xs:complexType></xs:element>
+			</xs:sequence></xs:complexType></xs:element>
+			<xs:element name="OrderTexts" minOccurs="0"><xs:complexType><xs:sequence>
+				<xs:element name="Text" maxOccurs="unbounded"><xs:complexType><xs:sequence>
+					<xs:element name="LineNumber"/>
+					<xs:element name="Language" minOccurs="0"/>
+					<xs:element name="TextID" minOccurs="0"/>
+					<xs:element name="TextLine" minOccurs="0"/>
+					<xs:element name="Function" minOccurs="0"/>
+				</xs:sequence></xs:complexType></xs:element>
+			</xs:sequence></xs:complexType></xs:element>
+		</xs:sequence></xs:complexType></xs:element>
+	</xs:sequence></xs:complexType></xs:element>
+</xs:schema>

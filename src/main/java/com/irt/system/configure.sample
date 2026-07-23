@@ -1,0 +1,39 @@
+####################################################################################################
+#
+#	+ Property(default value)
+#		systemName
+#		jndi
+#		dataSource
+#		SQLHandler
+#		messageSource
+#		tempDirectory
+#		[propertyKey]
+#
+#	+ DataSource
+#		DataSource.[sourceName].driverClassName
+#		DataSource.[sourceName].url
+#		DataSource.[sourceName].username
+#		DataSource.[sourceName].password
+#		DataSource.[sourceName].[key]
+#
+#	+ System
+#		[systemCode]System.systemName
+#		[systemCode]System.jndi
+#		[systemCode]System.dataSource
+#		[systemCode]System.SQLHandler
+#		[systemCode]System.messageSource
+#		[systemCode]System.tempDirectory
+#		[systemCode]System.[propertyKey]
+#
+####################################################################################################
+
+DataSource.rbm2.driverClassName			=	oracle.jdbc.driver.OracleDriver
+DataSource.rbm2.url						=	jdbc:oracle:thin:@211.40.51.9:1521:TESCO
+DataSource.rbm2.username				=	rbmadmin
+DataSource.rbm2.password				=	dolphinsl
+
+RBMSystem.systemName					=	RBM2 System
+RBMSystem.SQLHandler					=	com.irt.rbm.RBMDataHandler
+RBMSystem.messageSource					=	com.irt.rbm.mesg.RBMMessages
+RBMSystem.tempDirectory					=	/tmp
+RBMSystem.dataSource					=	rbm2

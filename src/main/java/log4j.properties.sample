@@ -1,0 +1,105 @@
+log4j.rootLogger = %WEBAPPS_LOG_ROOTLOGGER%
+
+# com.irt.servlet.ServletModel
+# com.irt.sql.SQLManager
+# com.irt.rbm.rbm.UploadLog
+# com.irt.rbm.pds.AnalysisManager
+
+log4j.logger.com.irt.servlet.ServletModel = INFO, webapps, debug
+# log4j.additivity.com.irt.servlet.ServletModel = false
+log4j.logger.com.irt.dpr.tools.OrderCanonicalProcess = INFO, tools, tools_err, tools_debug
+log4j.additivity.com.irt.dpr.tools.OrderCanonicalProcess = false
+
+log4j.appender.business = org.apache.log4j.RollingFileAppender
+log4j.appender.business.Threshold = TRACE
+log4j.appender.business.File = %WEBAPPS_LOG_PATH%/business.log
+log4j.appender.business.MaxFileSize = 5MB
+log4j.appender.business.MaxBackupIndex = 10
+log4j.appender.business.filter.a=org.apache.log4j.varia.StringMatchFilter
+log4j.appender.business.filter.a.StringToMatch= getRecordMap():
+log4j.appender.business.filter.a.AcceptOnMatch=false
+log4j.appender.business.filter.b=org.apache.log4j.varia.StringMatchFilter
+log4j.appender.business.filter.b.StringToMatch= getObjectValue():
+log4j.appender.business.filter.b.AcceptOnMatch=false
+log4j.appender.business.filter.c=org.apache.log4j.varia.StringMatchFilter
+log4j.appender.business.filter.c.StringToMatch= getRecordList():
+log4j.appender.business.filter.c.AcceptOnMatch=false
+log4j.appender.business.filter.d=org.apache.log4j.varia.StringMatchFilter
+log4j.appender.business.filter.d.StringToMatch= getInt():
+log4j.appender.business.filter.d.AcceptOnMatch=false
+#log4j.appender.business.filter.z=org.apache.log4j.varia.DenyAllFilter
+log4j.appender.business.layout = org.apache.log4j.PatternLayout
+log4j.appender.business.layout.ConversionPattern = [%d{MM/dd HH:mm:ssz}] [%p] [%F:%M] %m%n
+
+log4j.appender.debug = org.apache.log4j.RollingFileAppender
+log4j.appender.debug.Threshold = DEBUG
+log4j.appender.debug.File = %WEBAPPS_LOG_PATH%/debug.log
+log4j.appender.debug.MaxFileSize = 5MB
+log4j.appender.debug.MaxBackupIndex = 10
+log4j.appender.debug.layout = org.apache.log4j.PatternLayout
+log4j.appender.debug.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
+
+log4j.appender.error = org.apache.log4j.RollingFileAppender
+log4j.appender.error.Threshold = ERROR
+log4j.appender.error.File = %WEBAPPS_LOG_PATH%/error.log
+log4j.appender.error.MaxFileSize = 5MB
+log4j.appender.error.MaxBackupIndex = 10
+log4j.appender.error.layout = org.apache.log4j.PatternLayout
+log4j.appender.error.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
+
+log4j.appender.webapps = org.apache.log4j.RollingFileAppender
+log4j.appender.webapps.File = %WEBAPPS_LOG_PATH%/webapps.log
+log4j.appender.webapps.MaxFileSize = 5MB
+log4j.appender.webapps.MaxBackupIndex = 10
+log4j.appender.webapps.layout = org.apache.log4j.PatternLayout
+log4j.appender.webapps.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
+
+log4j.appender.smtp = org.apache.log4j.net.SMTPAppender
+log4j.appender.smtp.Threshold = ERROR
+log4j.appender.smtp.SMTPHost = %SMTP_HOST%
+log4j.appender.smtp.SMTPUsername = %SMTP_USER%
+log4j.appender.smtp.SMTPPassword = %SMTP_PASSWD%
+log4j.appender.smtp.To = jnjdpmessage@irt.co.kr
+log4j.appender.smtp.From = %SMTP_FROM%
+log4j.appender.smtp.Subject = %SYSTEMNAME% error
+log4j.appender.smtp.layout = org.apache.log4j.PatternLayout
+log4j.appender.smtp.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
+
+log4j.appender.rddlog_smtp = org.apache.log4j.net.SMTPAppender
+log4j.appender.rddlog_smtp.Threshold = ERROR
+log4j.appender.rddlog_smtp.SMTPHost = %SMTP_HOST%
+#log4j.appender.rddlog_smtp.SMTPUsername = %SMTP_USER%
+#log4j.appender.rddlog_smtp.SMTPPassword = %SMTP_PASSWD%
+log4j.appender.rddlog_smtp.To = %SMTP_TO%
+log4j.appender.rddlog_smtp.From = %SMTP_FROM%
+log4j.appender.rddlog_smtp.Subject = %SYSTEMNAME% RDD Failure Email
+log4j.appender.rddlog_smtp.layout = org.apache.log4j.PatternLayout
+log4j.appender.rddlog_smtp.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
+log4j.appender.rddlog_smtp.filter.a=org.apache.log4j.varia.StringMatchFilter
+log4j.appender.rddlog_smtp.filter.a.StringToMatch= RDDLOG:
+log4j.appender.rddlog_smtp.filter.a.AcceptOnMatch=true
+log4j.appender.rddlog_smtp.filter.z=org.apache.log4j.varia.DenyAllFilter
+
+log4j.appender.tools_debug = org.apache.log4j.RollingFileAppender
+log4j.appender.tools_debug.Threshold = DEBUG
+log4j.appender.tools_debug.File = %WEBAPPS_LOG_PATH%/wm_tools_debug.log
+log4j.appender.tools_debug.MaxFileSize = 5MB
+log4j.appender.tools_debug.MaxBackupIndex = 10
+log4j.appender.tools_debug.layout = org.apache.log4j.PatternLayout
+log4j.appender.tools_debug.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
+
+log4j.appender.tools_err = org.apache.log4j.RollingFileAppender
+log4j.appender.tools_err.Threshold = ERROR
+log4j.appender.tools_err.File = %WEBAPPS_LOG_PATH%/tools_err.log
+log4j.appender.tools_err.MaxFileSize = 5MB
+log4j.appender.tools_err.MaxBackupIndex = 10
+log4j.appender.tools_err.layout = org.apache.log4j.PatternLayout
+log4j.appender.tools_err.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
+
+log4j.appender.tools = org.apache.log4j.RollingFileAppender
+log4j.appender.tools.Threshold = INFO
+log4j.appender.tools.File = %WEBAPPS_LOG_PATH%/wm_tools.log
+log4j.appender.tools.MaxFileSize = 5MB
+log4j.appender.tools.MaxBackupIndex = 10
+log4j.appender.tools.layout = org.apache.log4j.PatternLayout
+log4j.appender.tools.layout.ConversionPattern = [%d{MM/dd HH:mm:ss}] [%p] %m (%F:%M)%n
