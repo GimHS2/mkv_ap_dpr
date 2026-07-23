@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<context-param>
+		<description>path</description>
+		<param-name>configureFile</param-name>
+		<param-value>/app/dpr/dportal/webapp-dpr/conf/rbmweb.conf</param-value>
+	</context-param>
+	<context-param>
+		<param-name>appEnvId</param-name>
+		<param-value>qa</param-value>
+	</context-param>
+	<context-param>
+		<param-name>webappRootPath</param-name>
+		<param-value>/app/dpr/dportal/webapp-dpr</param-value>
+	</context-param>
+	<context-param>
+		<description>version for the deploy site</description>
+		<param-name>deploy-version</param-name>
+		<param-value>22</param-value>
+	</context-param>
+	<listener>
+		<listener-class>com.irt.custom.ServletContextListener</listener-class>
+	</listener>
+
+	<!-- START SECTION: monitor role auth for javamelody &nbsp;
+		1. "https" required for security since BASIC auth-method is not safe on "http".
+		2. cred defined on tomcat-users.xml &nbsp;
+		<user username="yourusername" password="yourpassword" roles="monitor"/> &nbsp;
+	-->
+<!-- 	<login-config> -->
+<!-- 		<auth-method>BASIC</auth-method> -->
+<!-- 		<realm-name>Monitoring</realm-name> -->
+<!-- 	</login-config> -->
+<!-- 	<security-role> -->
+<!-- 		<role-name>monitoring</role-name> -->
+<!-- 	</security-role> -->
+<!-- 	<security-constraint> -->
+<!-- 		<web-resource-collection> -->
+<!-- 			<web-resource-name>Monitor</web-resource-name> -->
+<!-- 			<url-pattern>/monitoring</url-pattern> -->
+<!-- 		</web-resource-collection> -->
+<!-- 		<auth-constraint> -->
+<!-- 			<role-name>monitoring</role-name> -->
+<!-- 		</auth-constraint> -->
+<!-- 	</security-constraint> -->
+	<!-- END SECTION: monitor role auth for javamelody ( cred defined on tomcat-users.xml) -->
+
+        <security-constraint>
+                <web-resource-collection>
+                        <web-resource-name>basic authentication</web-resource-name>
+                        <url-pattern>/*</url-pattern>
+                        <http-method>GET</http-method>
+                        <http-method>POST</http-method>
+                </web-resource-collection>
+                <auth-constraint>
+                        <role-name>dpr</role-name>
+                </auth-constraint>
+
+                <user-data-constraint>
+                        <transport-guarantee>NONE</transport-guarantee>
+                </user-data-constraint>
+        </security-constraint>
+
+        <login-config>
+                <auth-method>BASIC</auth-method>
+        </login-config>
+
+	<!-- should not start with /. if tomcat alone, this will be /{contextPath}/${welcome-file} -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>servlet/Login</welcome-file>
+	</welcome-file-list>
+
+	<filter>
+		<filter-name>ExpiresFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+		<init-param>
+			<param-name>ExpiresByType image</param-name>
+			<param-value>access plus 10 days</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType text/css</param-name>
+			<param-value>access plus 10 hours</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ExpiresByType application/javascript</param-name>
+			<param-value>access plus 10 minutes</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>ExpiresDefault</param-name>
+			<param-value>access plus 0 seconds</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>ExpiresFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>HttpHeaderSecurityFilter</filter-name>
+		<filter-class>com.irt.servlet.filter.HttpHeaderSecurityFilter</filter-class>
+		<async-supported>true</async-supported>
+
+		<init-param>
+			<param-name>antiClickJackingEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>referrerPolicyEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>referrerPolicyValue</param-name>
+			<param-value>origin-when-cross-origin</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cspEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cspValue</param-name>
+			<param-value>default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.cookielaw.org https://s.go-mpulse.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; frame-ancestors 'none';</param-value>
+		</init-param>
+		<init-param>
+			<param-name>featurePolicyEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>featurePolicyValue</param-name>
+			<param-value>autoplay 'none'; camera 'none'</param-value>
+		</init-param>
+		<init-param>
+			<param-name>hstsEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>hstsMaxAgeSeconds</param-name>
+			<param-value>31536000</param-value>
+		</init-param>
+		<init-param>
+			<param-name>hstsIncludeSubDomains</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>hstsPreload</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>HttpHeaderSecurityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<!--filter>
+		<filter-name>CorsFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+		<init-param>
+			<param-name>cors.allowed.origins</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.headers</param-name>
+			<param-value>Access-Control-Allow-Origin</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>CorsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping-->
+
+	<resource-ref>
+		<res-ref-name>jdbc/DPR</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/mtltaglib</taglib-uri>
+			<taglib-location>/WEB-INF/mtl-taglib-2.2.tld</taglib-location>
+		</taglib>
+		<!-- Set to false to use JSP scriptiing syntax eg. <% int count = 0; %> -->
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<scripting-invalid>false</scripting-invalid>
+		</jsp-property-group>
+		<!-- Set to true to use irt's custom message evaluation and disable JSTL Expression Language (EL) syntax -->
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<el-ignored>true</el-ignored>
+		</jsp-property-group>
+	</jsp-config>
+	
+	<session-config>
+		<cookie-config>
+			<secure>true</secure>
+		</cookie-config>
+	</session-config>
+</web-app>

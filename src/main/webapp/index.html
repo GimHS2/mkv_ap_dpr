@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'/>
+	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+	<title>D-Portal2.0 (Dev)</title>
+	<style type="text/css">
+		div.login-wrapper {
+			display: table;
+			width: calc(100% - 30px);
+			height: calc(100% - 30px);
+			background-image: url(en/images/login_jnj/login_bg.png);
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			padding: 15px;
+		}
+	</style>
+	<script type='text/javascript' src='en/script/jquery.min.js'></script>
+	<script type="text/javascript">
+		function bodyLoad() {
+			var str = navigator.language;
+			var lan = str.split( '-' );
+			var currentDomain = window.location.hostname;
+			if( currentDomain && currentDomain.indexOf('qwe') >= 0 ) {
+				document.body = document.createElement( "body" );
+				document.body.innerHTML = "<div class='login-wrapper' /> <div class='modal' />";
+				$('.modal').load( lan[0] +'/popup.html');
+
+			}
+		}
+		bodyLoad();
+	</script>
+</head>
+
+<frameset rows='*' frameborder='no' border='0' framespacing='0'>
+	<frame src='https://gimhs.irt.co.kr/mkv_ap_dpr/servlet/Login'/>
+</frameset>
+
+</html>
+

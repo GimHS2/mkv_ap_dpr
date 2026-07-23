@@ -1,0 +1,4 @@
+<Context path="/dpr" reloadable="true">
+	<ResourceLink name="jdbc/DPR" global="jdbc/DPR" type="javax.sql.DataSource" /> 
+</Context>
+

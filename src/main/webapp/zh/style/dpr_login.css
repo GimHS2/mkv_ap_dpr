@@ -1,0 +1,204 @@
+/*
+ *	File Name:	dpr_login.css
+ *	Version:	2.2.0c(dpr)
+ *
+ *	Description:
+ *
+ *	Note:
+ *
+ *	Modified	(YYYY/MM/DD)	Ver		Content
+ *	hankalam	2021/11/30		2.2.0c	create
+**/
+
+body {
+	overflow: auto;
+	margin: 0; padding: 0;
+	background: #fff;
+}
+
+A {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div.login-wrapper {
+	display: table;
+	width: calc(100% - 30px);
+	height: calc(100% - 30px);
+	background-image: url(../images/login_jnj/login_bg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	padding: 15px;
+}
+
+div.login-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+div.login-box {
+	position: relative;
+	width: 580px; height: 860px;
+	background: #fff;
+	border: 0px solid;
+	border-radius: 7px 7px 0px 0px;
+	-moz-border-radius: 7px 7px 0px 0px;
+	-webkit-border-radius: 7px 7px 0px 0px;
+	box-shadow: 0 0 10px #5F5F5F;
+	-moz-box-shadow: 0 0 10px #5F5F5F;
+	-webkit-box-shadow: 0 0 10px #5F5F5F;
+	z-index: 1;
+	margin: 0 auto;
+}
+
+div.login-header {
+	padding: 25px 30px 15px 30px;
+	position: relative; height: 50px;
+}
+
+div.login-locale {
+	float: right;
+	margin-top: 5px;
+}
+
+.ui-selectmenu-button {
+	border: 1px solid #C6C6C6;
+	background-color: #FFFFFF;
+}
+
+.ui-selectmenu-button.ui-button {
+	text-align: left;
+	white-space: nowrap;
+	padding: 5px 8px;
+}
+
+.ui-selectmenu-button.ui-button:hover, .ui-selectmenu-button.ui-button:focus,
+.ui-selectmenu-button.ui-button:focus-visible, .ui-selectmenu-button.ui-button:active {
+	border: 2px solid #0C8CAA;
+	background-color: #FFFFFF;
+	color: #333333;
+}
+
+.ui-selectmenu-button .ui-icon.arrow-down {
+	width: 12px;
+	height: 8px;
+	top: 5px;
+	background-image: url(../images/ico_arrow_down.png);
+	transition: transform 0.2s;
+}
+
+.ui-selectmenu-button .ui-icon.arrow-up {
+	width: 12px;
+	height: 8px;
+	top: 5px;
+	background-image: url(../images/ico_arrow_down.png);
+	transform: rotate(180deg);
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	transition: transform 0.2s;
+}
+
+.ui-selectmenu-text {
+	font-size: 14px;
+}
+
+.ui-selectmenu-text img {
+	position: relative;
+	top: 3px;
+}
+
+.ui-selectmenu-open {
+	padding: 10px 0;
+	box-shadow: 0 3px 12px rgba(33, 33, 33, .2);
+	-moz-box-shadow: 0 3px 12px rgba(33, 33, 33, .2);
+	-webkit-box-shadow: 0 3px 12px rgba(33, 33, 33, .2);
+	background: #ffffff;
+}
+
+.ui-widget.ui-widget-content {
+	color: #333333;
+	border: 0px solid #FFFFFF;
+}
+
+.ui-menu .ui-menu-item {
+	font-size: 14px;
+}
+
+.ui-menu .ui-menu-item-wrapper {
+	padding: 10px 20px;
+}
+
+.ui-menu-item-wrapper.ui-state-active {
+	background-color: #EBEBEB;
+	color: #333333;
+	border: 0px solid #EBEBEB;
+}
+
+div.login-customer-logo {
+	float: left;
+}
+
+div.login-client-logo {
+	height: 130px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+img.login-logo {
+	position: absolute;
+}
+
+div.login-form {
+	padding: 30px;
+	margin-bottom: 7px;
+}
+
+a.login_forget {
+	font-size: 14px;
+}
+
+div.login_field:not(:last-child) {
+	margin-bottom: 25px;
+}
+
+span.login_title {
+	font-weight: bold;
+	font-size: 14px;
+	padding-left: 2px;
+}
+
+input.field {
+	border: 1px solid #c6c6c6;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	width: 100%; height: 34px;
+	padding: 4px 10px 5px 10px; margin-top: 7px;
+}
+input.field:focus { border: 2px solid #0c8caa; border-radius: 3px; outline: 0 none; }
+
+.btn-login{
+	width: 122px; height: 34px;
+	background-color: #0c8caa;
+	border: none;
+	border-radius: 17px;
+	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 2;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.btn-login:hover, .btn-primary:hover {
+	background-color: #096980;
+}
+
+.btn-login:active, .btn-primary:active {
+	background-color: #025569;
+}

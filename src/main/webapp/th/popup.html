@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+<base href="th/">
+	<style>
+		.layerPopup {
+			z-index: 10000;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #FFFFFF;
+			word-break:break-all;
+			width: 900px;
+			height: 480px;
+			padding: 30px;
+			box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6), 0px 0px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.layerBox {
+			position: absolute;
+			width: 100%;
+			top: 50%;
+			left: 52%;
+			transform: translate(-50%, -50%);
+		}
+
+		.layerBox p {
+			font-size: 13.5px;
+		}
+
+		.layerPopup a{
+			text-decoration: underline;
+			color: #0000EE;
+			width: 50px;
+			height: 40px;
+		}
+
+		.notice_main {
+			margin-top: 80px;
+			margin-bottom: 80px;
+		}
+
+		.underline {
+			text-decoration: underline;
+			text-decoration-color: #000000;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+			font-size: 20px;
+		}
+		.popup-logo {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+	</style>
+
+	<script type='text/javascript' src='script/jquery.min.js'></script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			var count = 15;
+			$( "span#countdown" ).text( count );
+
+			var countdown = setInterval(function() {
+				$( "span#countdown" ).text( count );
+				if (count == 0) {
+					clearInterval(countdown);
+					parent.location.href = 'https://qa.apackenvuedportal.com';
+				}
+					count--;
+			}, 1000);
+		});
+
+		function closePop() {
+			parent.location.href = 'https://qa.apackenvuedportal.com';
+		}
+
+		function redirectLink() {
+			parent.location.href = 'https://qa.apackenvuedportal.com';
+		}
+	</script>
+</head>
+<body>
+	<div class="layerPopup" id="layer_popup">
+		<div class ='popup-logo'>
+			<img src='images/popup-logo.png'>
+		</div>
+		<div class='layerBox'>
+			<p>ขณะนี้เรากำลังพาท่านเข้าสู่ เว็บไซต์พอร์ทัลผู้จัดจำหน่ายสินค้า KENVUE ภายใน <span id="countdown"></span> วินาที </p>
+			<div class ='notice_main'>
+			<p>เเรียนท่านผู้จัดจำหน่ายสินค้า</p>
+			<p>เราขอเรียนให้ท่านทราบว่า เรากำลังจะย้าย เว็บไซต์พอร์ทัลผู้จัดจำหน่ายสินค้า KENVUE ไปที่ URLใหม่ <a id="portalLink" onclick="redirectLink()" style="cursor: pointer;">qa.apackenvuedportal.com</a> ตั้งแต่วันที่ 8 พฤษภาคม 2567 เป็นต้นไป</p>
+			<p>ขอให้ท่านช่วยกรุณา ทำการเก็บ URL ใหม่เพื่อใช้ในครั้งต่อๆไป ทั้งนี้การเชื่อมต่ออัตโนมัติ จาก URL เก่าและURL ใหม่ จะหยุดลงภายในวันที่ 31 ธันวาคม 2567</p>
+			</div>
+			<p>หากท่านมีขอสงสัย หรือต้องการความช่วยเหลือกรุณาติดต่อฝ่ายบริการลูกค้า Kenvue: <a href="mailto:﻿DL-CONTH-Customers-Logistics@kenvue.com">DL-CONTH-Customers-Logistics@kenvue.com</a></p>
+		</div>
+		<div class="close-btn" onclick="closePop()">
+			<img src='images/popup-close.png'>
+		</div>
+	</div>
+</body>
+</html>

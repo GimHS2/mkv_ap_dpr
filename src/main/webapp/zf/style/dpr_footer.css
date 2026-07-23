@@ -1,0 +1,58 @@
+/*
+ *	File Name:	dpr_footer.css
+ *	Version:	2.2.1c(dpr)
+ *
+ *	Description:
+ *
+ *	Note:
+ *
+ *	Modified	(YYYY/MM/DD)	Ver		Content
+ *	dudwls3720	2024/02/29		2.2.1c	색상 #b41601 -> #00B097 모두 변경
+ *	hankalam	2021/11/30		2.2.0c	create
+**/
+
+
+/***********************************************************************************************************************
+	public
+***********************************************************************************************************************/
+
+div.copyright {
+	padding: 20px;
+}
+
+div.copyright div {
+	clear: both;
+	color: #63666A;
+	font-size: 12px;
+	line-height: 130%;
+	text-align: center;
+}
+
+div.copyright div.link {
+	margin-bottom: 7px;
+}
+
+div.copyright #ot-sdk-btn.ot-sdk-show-settings {
+	color: #CE6500 !important;
+	text-decoration: none !important;
+	font-size: 11px !important;
+	font-weight: normal !important;
+	border: none !important;
+	padding: 0 !important;
+}
+div.copyright #ot-sdk-btn.ot-sdk-show-settings:hover {
+	color: #CE6500 !important;
+}
+div.copyright #ot-sdk-btn.ot-sdk-show-settings::before {
+	display: none;
+}
+
+div.copyright A { font-weight: normal !important; }
+
+div.warn { position: absolute; bottom: 0; background-color: #00B097; padding: 25px 40px; text-align: center; letter-spacing: 2; }
+div.warn h2, div.warn p { color: #FFF; font-size: 12px }
+div.warn h2 { margin: 0; }
+div.warn p { line-height: 120%; letter-spacing: -0.4; margin-top: 7px; margin-bottom: 12px; }
+div.warn p.last { margin-bottom: 0; }
+
+

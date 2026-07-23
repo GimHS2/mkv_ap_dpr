@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration strict="false" monitorInterval="30" status="WARN">
+
+	<!-- For ${main:~~} $${date:~~} refer: https://logging.apache.org/log4j/2.x/manual/lookups.html
+		TimeBasedTriggeringPolicy.interval=1 -> from 'filePattern' the last unit(eg. if 'dd' then 1 day basis )
+		TimeBasedTriggeringPolicy.interval=4 -> from 'filePattern' the last unit(eg. if 'hh' then 4 hour basis )
+		DefaultRolloverStrategy.max=10 -> keep max 10 rollings.( delete old one ) -->
+
+	<Properties>
+		<Property name="appRootPath">${main:webappRootPath}</Property>
+		<Property name="appCtxName">${main:webappCtxName}</Property>
+		<Property name="appName">${main:webappCtxName}-${main:appEnvId}</Property>
+		<Property name="systemName">[${appName}] D-Portal</Property>
+
+		<Property name="logSmtpFrom">ghan8@its.jnj.com</Property>
+		<!-- <Property name="logSmtpTo">jnjdpmessage@irt.co.kr</Property> -->
+		<Property name="logSmtpTo">${main:webSmtpTo:-hankalam@irt.co.kr}</Property>
+		<Property name="logSmtpHost">smtp.ap.jnj.com</Property>
+		<Property name="logSmtpPort">25</Property>
+		<Property name="logSmtpProtocol">smtp</Property>
+		<!-- <Property name="logSmtpUsername">${main:smtpUsername:-}</Property> -->
+		<!-- <Property name="logSmtpPassword">${main:smtpPassword:-}</Property> -->
+
+		<Property name="logBufferSize">50</Property>
+		<Property name="ignoreLog4jException">true</Property>
+
+		<Property name="constantTimeZone">GMT+8</Property>
+		<Property name="ptnLayFmt">[%d{yyyy-MM-dd'T'HH:mm:ssZ}{${constantTimeZone}}][%p] [%X{uniqId} %X{requestName}] %m (%F:%M)%n</Property>
+		<Property name="dbgPtnLayFmt">[%d{yyyy-MM-dd'T'HH:mm:ssZ}{${constantTimeZone}}][%p] [%X{uniqId} %X{requestName}] [%X{req.queryString}] %m (%F:%M)%n</Property>
+		<Property name="errPtnLayFmt">[%d{yyyy-MM-dd'T'HH:mm:ssZ}{${constantTimeZone}}][%p] %C %m (%F:%M)%n%X%n%ex{full}</Property>
+	</Properties>
+
+	<Appenders>
+		<Routing name="ByUniqId">
+			<Routes pattern="$${ctx:uniqId}">
+				<Route>
+					<RollingFile name="adtlog" append="true" fileName="${appRootPath}/logs/audit/${ctx:uniqId}.syslog"
+						filePattern="${appRootPath}/logs/audit/archive/${appCtxName}-${ctx:uniqId}-adt-%d{yyyy-MM}-%i.syslog" ignoreExceptions="${ignoreLog4jException}" bufferSize="${logBufferSize}">
+						<RFC5424Layout appName="${appCtxName}" includeMDC="true" newLine="true" mdcPrefix="" exceptionPattern="%ex{short}">
+							<LoggerFields>
+								<KeyValuePair key="datetime" value="%d{yyyy-MM-dd'T'HH:mm:ssZ}{${constantTimeZone}}" />
+								<KeyValuePair key="timestamp" value="%d{UNIX_MILLIS}" />
+							</LoggerFields>
+						</RFC5424Layout>
+						<Policies>
+							<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+							<SizeBasedTriggeringPolicy size="50 MB" />
+						</Policies>
+						<DefaultRolloverStrategy max="6" />
+					</RollingFile>
+				</Route>
+			</Routes>
+		</Routing>
+
+		<RollingFile name="weblog" fileName="${appRootPath}/logs/${appCtxName}-web.log" filePattern="${appRootPath}/logs/${appCtxName}-web-%d{yyyy-MM}.log" ignoreExceptions="${ignoreLog4jException}">
+			 <PatternLayout pattern="${ptnLayFmt}" />
+			 <Policies>
+			 <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			 <SizeBasedTriggeringPolicy size="50 MB" />
+			 </Policies>
+			 <DefaultRolloverStrategy max="10" />
+		 </RollingFile>
+		<RollingFile name="exclog" fileName="${appRootPath}/logs/${appCtxName}-exc.log" filePattern="${appRootPath}/logs/${appCtxName}-exc-%d{yyyy-MM}.log" ignoreExceptions="${ignoreLog4jException}">
+			<PatternLayout pattern="${errPtnLayFmt}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+
+		<RollingFile name="excfirstlog" fileName="${appRootPath}/logs/${appCtxName}-excfirst.log" filePattern="${appRootPath}/logs/$${date:yyyy-MM}/${appCtxName}-excfirst-%d{yyyy-MM}-%i.log"
+			ignoreExceptions="${ignoreLog4jException}">
+			<PatternLayout pattern="${errPtnLayFmt}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+
+		<RollingFile name="dbglog" fileName="${appRootPath}/logs/${appCtxName}-dbg.log" filePattern="${appRootPath}/logs/$${date:yyyy-MM}/${appCtxName}-dbg-%d{yyyy-MM}-%i.log"
+			ignoreExceptions="${ignoreLog4jException}">
+			<PatternLayout pattern="${dbgPtnLayFmt}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+
+		<RollingFile name="trclog" fileName="${appRootPath}/logs/${appCtxName}-trc.syslog" filePattern="${appRootPath}/logs/$${date:yyyy-MM}/${appCtxName}-trc-%d{yyyy-MM}-%i.syslog"
+			ignoreExceptions="${ignoreLog4jException}">
+			<RFC5424Layout appName="${appCtxName}" includeMDC="true" newLine="true" mdcPrefix="" exceptionPattern="%ex{short}" >
+				<LoggerFields>
+					<KeyValuePair key="datetime" value="%d{yyyy-MM-dd'T'HH:mm:ssZ}{${constantTimeZone}}" />
+					<KeyValuePair key="timestamp" value="%d{UNIX_MILLIS}" />
+				</LoggerFields>
+			</RFC5424Layout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+
+		<RollingFile name="fulltrclog" fileName="${appRootPath}/logs/${appCtxName}-fulltrc.syslog" filePattern="${appRootPath}/logs/$${date:yyyy-MM}/${appCtxName}-fulltrc-%d{yyyy-MM}-%i.syslog"
+			ignoreExceptions="${ignoreLog4jException}">
+			<RFC5424Layout appName="${appCtxName}" includeMDC="true" newLine="true" mdcPrefix="" exceptionPattern="%ex{short}">
+				<LoggerFields>
+					<KeyValuePair key="datetime" value="%d{yyyy-MM-dd'T'HH:mm:ssZ}{${constantTimeZone}}" />
+					<KeyValuePair key="timestamp" value="%d{UNIX_MILLIS}" />
+				</LoggerFields>
+			</RFC5424Layout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+
+		<RollingFile name="wmlog" fileName="${appRootPath}/logs/${appCtxName}-wm.log" filePattern="${appRootPath}/logs/$${date:yyyy-MM}/${appCtxName}-wm-%d{yyyy-MM}-%i.log"
+			ignoreExceptions="${ignoreLog4jException}">
+			<PatternLayout pattern="${ptnLayFmt}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+		<RollingFile name="wmerrlog" fileName="${appRootPath}/logs/${appCtxName}-wmerr.log" filePattern="${appRootPath}/logs/$${date:yyyy-MM}/${appCtxName}-wmerr-%d{yyyy-MM}-%i.log"
+			ignoreExceptions="${ignoreLog4jException}">
+			<PatternLayout pattern="${ptnLayFmt}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="50 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="20" />
+		</RollingFile>
+
+		<!-- <Console name="console" target="SYSTEM_OUT"> -->
+		<!-- <PatternLayout> -->
+		<!-- <pattern>[%d{yyyy-MM-dd'T'HH:mm:ssZ}{GMT+8}][%level{length=1}] [%X{uniqId}] %C{1.} %m (%F:%M)%n</pattern> -->
+		<!-- </PatternLayout> -->
+		<!-- </Console> -->
+
+		<!-- smtpUsername="${logSmtpUsername}" smtpPassword="${logSmtpPassword}" -->
+		<SMTP name="errmailer" ignoreExceptions="true" subject="${systemName} error" to="${logSmtpTo}" from="${logSmtpFrom}" smtpHost="${logSmtpHost}" smtpPort="${logSmtpPort}"
+			smtpProtocol="${logSmtpProtocol}" smtpDebug="false" bufferSize="5">
+			<PatternLayout pattern="${errPtnLayFmt}" />
+			<ThresholdFilter level="ERROR" onMatch="NEUTRAL" onMismatch="DENY" />
+		</SMTP>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="business" level="DEBUG" includelocation="true" additivity="false">
+			<AppenderRef ref="ByUniqId" level="INFO" />
+			<AppenderRef ref="dbglog" level="INFO" />
+			<AppenderRef ref="trclog" level="INFO" />
+			<AppenderRef ref="wmlog" level="TRACE" />
+		</Logger>
+
+		<Logger name="excwarn" level="TRACE" includelocation="true" additivity="false">
+			<AppenderRef ref="fulltrclog" level="TRACE" />
+		</Logger>
+		<Logger name="ext" level="TRACE" includelocation="true" additivity="false">
+			<AppenderRef ref="fulltrclog" level="TRACE" />
+		</Logger>
+
+		<Logger name="com.irt.servlet.ServletModel" level="DEBUG" includelocation="false" additivity="false">
+			<AppenderRef ref="weblog" level="DEBUG" />
+			<AppenderRef ref="wmlog" level="INFO" />
+		</Logger>
+		<Logger name="com.irt.sql.SQLManager" level="DEBUG" includelocation="false" additivity="false">
+			<AppenderRef ref="dbglog" level="TRACE" />
+		</Logger>
+		<Logger name="com.irt.dpr.tools.OrderCanonicalProcess" level="DEBUG" includelocation="true" additivity="true">
+			<AppenderRef ref="dbglog" level="INFO" />
+			<AppenderRef ref="wmlog" level="TRACE" />
+			<AppenderRef ref="wmerrlog" level="ERROR" />
+		</Logger>
+
+		<Logger name="fulltrc" level="TRACE" includelocation="false" additivity="false">
+			<AppenderRef ref="fulltrclog" level="TRACE" />
+		</Logger>
+
+		<!--
+		<Logger name="excfirst" level="TRACE" includelocation="true" additivity="false">
+			<AppenderRef ref="excfirstlog" level="TRACE" />
+		</Logger>
+		<Logger name="priv.com.irt.dsproxy.sync" level="TRACE" includelocation="false" additivity="true">
+		</Logger>
+		<Logger name="priv.com.irt.dsproxy" level="TRACE" includelocation="false" additivity="false">
+			<AppenderRef ref="ByUniqId" level="TRACE" />
+			<AppenderRef ref="trclog" level="TRACE" />
+		</Logger>
+		-->
+
+		<Logger name="com.irt" level="TRACE" includelocation="false" additivity="true">
+			<AppenderRef ref="ByUniqId" level="TRACE" />
+			<AppenderRef ref="trclog" level="TRACE" />
+		</Logger>
+
+		<Root level="DEBUG" includelocation="true">
+			<AppenderRef ref="exclog" level="ERROR" />
+			<AppenderRef ref="errmailer" level="ERROR" />
+			<!-- <AppenderRef ref="console" level="ALL"/> -->
+		</Root>
+	</Loggers>
+</Configuration>

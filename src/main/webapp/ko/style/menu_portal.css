@@ -1,0 +1,347 @@
+/*
+ *	File Name:	menu_portal.css
+ *	Version:	2.2.1
+ *
+ *	Description:
+ *
+ *	Note:
+ *
+ *
+ *
+ *	Modified	(YYYY/MM/DD)	Ver		Content
+ *	jbaek		2014/03/31		2.2.1	CrossBrowsing 적용
+ *	lsinji		2008/09/26		2.2.0	create
+**/
+
+
+/***********************************************************************************************************************
+	public
+***********************************************************************************************************************/
+div {
+	scrollbar-face-color: #E8E8E8;
+	scrollbar-shadow-color: #FFFFFF;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-3dlight-color: #E8E8E8;
+	scrollbar-darkshadow-color: #BDBDBD;
+	scrollbar-track-color: transparent !important;
+	scrollbar-arrow-color: #F78531;
+}
+
+A:link		{ color: #CE6500; text-decoration: none; }
+A:visited	{ color: #CE6500; text-decoration: none; }
+A:hover		{ color: #CE6500; text-decoration: none; }
+A:active	{ color: #CE6500; text-decoration: none; }
+/*
+td {
+	font-size: 12px; color: #333333;
+	word-break: break-all;
+	padding: 10px;
+}
+
+th {
+	font: bold 12px; color: #212121;
+	text-align: center; line-height: 13px;
+	padding: 10px;
+	background-color: #f9f9f9;
+	border-bottom: 2px solid #d8d8d8;
+}
+ */
+
+/***********************************************************************************************************************
+	body
+***********************************************************************************************************************/
+
+
+/***********************************************************************************************************************
+	header( title/msg )
+***********************************************************************************************************************/
+table#content_title {
+	border: 1px solid #D8D8D8; border-bottom: 2px solid #F1C101;
+}
+
+td.title {
+	background: ;
+	font: bold 20px; color: #760000;
+	vertical-align: middle;
+	height: 26px;
+	padding-top: 5px; padding-left: 15px;
+	padding-bottom: 5px;
+}
+
+td.page_env {
+	text-align: right; vertical-align: middle;
+	height: 26px;
+	padding-top: 1px; padding-right: 5px;
+}
+
+table.msg {
+	margin-top: 5px; margin-bottom: 0px;
+}
+pre#msg {
+	font: 12px;
+	font-weight: bold; color: #F90000;
+	height: 16px;
+	margin: 0px;
+}
+
+
+/***********************************************************************************************************************
+	button
+***********************************************************************************************************************/
+table.btn_page {
+	width: 100%; height: 35px;
+	margin-top: 5px;
+	padding: 5px;
+}
+
+
+/***********************************************************************************************************************
+	catelink
+***********************************************************************************************************************/
+span.cate_link a:hover {
+	background: #F1F7FE;
+	border: 1px dotted #A7EFFF;
+}
+
+
+/***********************************************************************************************************************
+	info/input
+***********************************************************************************************************************/
+/* .mandatory {
+	font-weight: bold; color: #0E8F01;
+}
+
+.mandatory_u {
+	font-weight: bold; color: #B50000;
+}
+ */
+table.info_content {
+	border-top: 3px solid #B64D00; border-bottom: 1px solid #B64D00;
+	border-left: 1px solid #B64D00; border-right: 1px solid #B64D00;
+	margin-top: 10px; margin-bottom: 10px;
+}
+
+td.subject0, td.subject {
+	background-color: #E8E8E8;
+}
+
+td.content0, td.content1, td.content2, td.content3, td.content3_c, td.content3_2, td.content4, td.content4_2, td.content4_3 {
+	background-color: #F6F6F6;
+}
+
+
+/***********************************************************************************************************************
+	input/select
+***********************************************************************************************************************/
+input.content_m, select.content_m, textarea.content_m {
+	background-color: #FFFFDC;
+}
+
+input.content_omod, select.content_omod, textarea.content_omod, input.content_mmod, select.content_mmod, textarea.content_mmod {
+	background-color: #BAA480;
+}
+
+input.content_mod, select.content_mod, input.content_mmod, select.content_mmod {
+	border: 1px solid #8D8D8D;
+}
+
+input.readonly, select.readonly, textarea.readonly {
+	background-color: #C1C1C1;
+}
+
+
+/***********************************************************************************************************************
+	search
+***********************************************************************************************************************/
+table.search_content {
+	background: #F7F7F7;
+	border-top: 1px solid #F59652; border-bottom: 1px solid #F59652;
+	border-left: 1px solid #F59652; border-right: 1px solid #F59652;
+	padding-top: 5px; padding-bottom: 5px;
+	padding-left: 5px; padding-right: 15px;
+}
+
+td.search_subject {
+	font: bold; color: #B45917;
+	padding-left: 10px; padding-right: 5px;
+}
+
+
+/***********************************************************************************************************************
+	list
+***********************************************************************************************************************/
+/* div.list_content {
+	margin-top: 10px; margin-bottom: 10px;
+}
+
+span#page_index {
+	font-weight: bold; color: #B64D00;
+}
+
+span#page_index_link {
+	color: #999999;
+}
+
+table.list_content_header {
+	border-top: 3px solid #E06308; border-bottom: 0px solid #E06308;
+	border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;
+	margin-top: 2px;
+}
+
+table.list_content_data {
+	border-top: 0px solid; border-bottom: 0px solid;
+	border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;
+}
+
+table.list_content_summary {
+	border-top: 0px solid; border-bottom: 0px solid;
+	border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;
+}
+
+table.list_content_function {
+	background-color: #F3F3F3;
+	border-top: 0px solid; border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC; border-right: 1px solid #CCCCCC;
+	padding-top: 4px; padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+table.list_content_bottom {
+	margin-top: 10px;
+}
+
+tr.mouseover {
+	background-color: #FEFEF1;
+}
+
+tr.selected {
+	background-color: #E9E9E9;
+}
+ */
+
+/***********************************************************************************************************************
+	list(XY)
+***********************************************************************************************************************/
+/*
+div.list_content_xy_header_top, td.list_content_xy_header_top {
+	height: 3px;
+	border-top: 3px solid #E06308;
+}
+
+table.list_content_xy {
+	border-left: 1px solid #CCCCCC;
+	margin-top: 2px;
+}
+
+td.list_content_xy_d, th.list_content_xy_d {
+	border-right: 1px solid #CCCCCC;
+}
+
+td.list_content_xy_f_d {
+	border-right: 1px solid #CCCCCC;
+}
+*/
+
+/***********************************************************************************************************************
+	tab-pane: tabpane
+***********************************************************************************************************************/
+/* .tabpane .tab-page {
+	height: 378; chrome에서 height 안맞아서 삭제
+	background: #F7F7F7;
+	border: 1px solid #BE7139;
+}
+
+.tabpane_tabrow .tab {
+	background: url(../images/ico_tab.gif) repeat-x;
+	border: 1px solid #BE7139; border-bottom: 0px;
+}
+
+.tabpane_tabrow .hover {
+	background: url(../images/ico_tab_active.gif) repeat-x;
+	border: 1px solid #6C3232; border-bottom: 0px;
+}
+
+.tabpane_tabrow .selected {
+	background: url(../images/ico_tab_active.gif) repeat-x;
+	border: 1px solid #6C3232; border-bottom: 0px;
+} */
+
+
+/***********************************************************************************************************************
+	Main page
+***********************************************************************************************************************/
+div.board_index {
+	width: 100%; height: auto;
+	margin-top: 30px;
+	padding-left: 5px; padding-right: 5px;
+}
+
+div.board_left, div.board_right {
+	width: 100%;
+	position: relative;
+	border: 1px solid #CACACA;
+	margin-top: 35px; margin-bottom: 0;
+	padding-left: 5px; padding-right: 5px;
+}
+
+div.board_left {
+	float: left;
+}
+
+p.board_title {
+	font: bold 13px; color: #690000;
+	height: 23px;
+	padding-top: 3px;
+	margin-left: 7px; margin-top: -23px;
+	padding-left: 25px; padding-right: 25px;
+	border: 1px solid #CACACA; border-bottom: 1px solid #FFF;
+	position: absolute;
+}
+
+p.board_title img {
+	margin-top: 2px;
+	margin-left: -10px; margin-right: -10px;
+}
+
+/* changed to dpr_main_page.jsp table function button( detail link ) */
+p.function {
+	position: absolute;
+	top: -30px;
+	right: 30px;
+}
+
+div.board_right {
+	float: left;
+}
+
+table.board_index {
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin-top: 5px;
+}
+
+table.board_index th {
+	font-weight: bold;
+	border-top: 1px solid #CACACA; border-bottom: 1px solid #CACACA;
+	height: 25px;
+	margin-top: -5px;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+	white-space:nowrap;
+	text-align: left;
+}
+
+table.board_index td {
+	height: 24px;
+	border-bottom: 1px solid #CACACA;
+	padding-left: 3px; padding-right: 3px;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+	white-space:nowrap;
+}
+
+p.copyright {
+	font: 11px "helvetica"; color: #999999;
+	text-align: center;
+	margin-top: 0;
+}

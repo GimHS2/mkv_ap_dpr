@@ -1,0 +1,198 @@
+/*
+ *	File Name:	dpr_menu.css
+ *	Version:	2.2.1c(dpr)
+ *
+ *	Description:
+ *
+ *	Note:
+ *
+ *	Modified	(YYYY/MM/DD)	Ver		Content
+ *	dudwls3720	2024/02/29		2.2.1c	색상 #b41601 -> #00B097 모두 변경
+ *	hankalam	2021/11/30		2.2.0c	create
+**/
+
+body.main {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+
+#content {
+	width:100%;
+	margin-top: 10px;
+	height: calc(100% - 103px);
+	border: none;
+}
+
+div.header {
+	display: table;
+	background-color: #00B097;
+	width: 100%; height: 90px;
+	box-shadow: 0 0 12px #929292;
+	-moz-box-shadow: 0 0 12px #929292;
+	-webkit-box-shadow: 0 0 12px #929292;
+	z-index: 100;
+}
+
+div.header-sep {
+	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+div.header-logo {
+	width: 180px;
+	background-color: #FFFFFF;
+	background-image: url(../images/logo_small.png);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+div.menu-wrap {
+	display: table;
+	height: 100%;
+	background-color: #00B097;
+	padding: 0 29px;
+	z-index: 100;
+}
+
+div.menu-wrap > div {
+	color: #FFFFFF;
+	word-break: keep-all;
+	font-size: 18px;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+	padding: 0 20px;
+	cursor: pointer;
+}
+
+div.menu-wrap > div > img {
+	vertical-align: -4px; margin-right: 6px;
+}
+
+div.menu-right {
+	padding-right: 24px;
+	text-align: right;
+	background-color: #00B097;
+}
+
+div.logout, div.menu-locale {
+	display: inline-block;
+	margin: 3px 0;
+}
+
+div.logout {
+	position: relative;
+	height: 34px;
+	top: 2px;
+	padding: 0 20px 0 48px;
+	margin-right: 15px;
+	background-image: url(../images/ico_logout.png);
+	background-repeat: no-repeat;
+	background-position: 20px 7px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	border-radius: 18px;
+	cursor: pointer;
+}
+
+div.logout:hover {
+	background-color: #831001;
+	background-image: url(../images/ico_logout_hover.png);
+}
+
+div.logout:active {
+	background-color: #670C01;
+	background-image: url(../images/ico_logout_pressed.png);
+}
+
+div.logout div {
+	line-height: 34px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+div.logout div.hover {
+	color: #00B097;
+}
+
+div.logout div.active {
+	color: #981200;
+}
+
+div.menu-over-bg {
+	position: absolute;
+	width: 100%;
+	height: 6px;
+	bottom: 0;
+}
+
+div.menu-over {
+	position: relative;
+	width: 50px;
+	height: 6px;
+	background-color: #FFFFFF;
+	border-radius: 5px 5px 0 0;
+	transition: left 0.3s;
+	z-index: 100;
+}
+
+div.sub-menu {
+	position: absolute;
+	width: 100%;
+	z-index: 99;
+	box-shadow: 0 10px 10px -10px #888888;
+	-moz-box-shadow: 0 10px 10px -10px #888888;
+	-webkit-box-shadow: 0 10px 10px -10px #888888;
+	background-color: #FFFFFF;
+}
+
+ul.sub-menu {
+	display: none;
+	background-color: #FFFFFF;
+	padding-top: 28px;
+	margin: 0;
+}
+
+ul.sub-menu li {
+	float: left;
+	list-style: none;
+	padding: 0 20px 28px 20px;
+	font-size: 16px;
+	color: #63666A;
+}
+
+ul.sub-menu li a {
+	cursor: pointer;
+}
+
+ul.sub-menu a:link, ul.sub-menu a:visited, ul.sub-menu a:active {
+	text-decoration: none;
+	color: #63666A;
+}
+
+ul.sub-menu a:hover {
+	color: #212121;
+	text-decoration: underline;
+}
+
+div.content-overlay {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: auto;
+	top: 90px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.2);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+}

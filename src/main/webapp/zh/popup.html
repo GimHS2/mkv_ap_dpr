@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+<base href="zh/">
+	<style>
+		.layerPopup {
+			z-index: 10000;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #FFFFFF;
+			word-break:break-all;
+			width: 900px;
+			height: 480px;
+			padding: 30px;
+			box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6), 0px 0px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.layerBox {
+			position: absolute;
+			width: 100%;
+			top: 50%;
+			left: 52%;
+			transform: translate(-50%, -50%);
+		}
+
+		.layerBox p {
+			font-size: 17px;
+		}
+
+		.layerPopup a{
+			text-decoration: underline;
+			color: #0000EE;
+			width: 50px;
+			height: 40px;
+		}
+
+		.notice_main {
+			margin-top: 80px;
+			margin-bottom: 80px;
+		}
+
+		.underline {
+			text-decoration: underline;
+			text-decoration-color: #000000;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+			font-size: 20px;
+		}
+		.popup-logo {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+	</style>
+
+	<script type='text/javascript' src='script/jquery.min.js'></script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			var count = 15;
+			$( "span#countdown" ).text( count );
+
+			var countdown = setInterval(function() {
+				$( "span#countdown" ).text( count );
+				if (count == 0) {
+					clearInterval(countdown);
+					parent.location.href = 'https://qa.apackenvuedportal.com';
+				}
+					count--;
+			}, 1000);
+		});
+
+		function closePop() {
+			parent.location.href = 'https://qa.apackenvuedportal.com';
+		}
+
+		function redirectLink() {
+			parent.location.href = 'https://qa.apackenvuedportal.com';
+		}
+	</script>
+</head>
+<body>
+	<div class="layerPopup" id="layer_popup">
+		<div class ='popup-logo'>
+			<img src='images/popup-logo.png'>
+		</div>
+		<div class='layerBox'>
+			<p><span style="font-weight:bold;">您将会在倒计时<span id="countdown"></span>秒后自动跳转到新的科赴 经销商门户网站页面。</span></p>
+			<div class ='notice_main'>
+			<p>亲爱的用户，</p>
+			<p><span style="font-weight:bold;">科赴经销商门户网站页面已于2024年5月8日迁移至新的 <a id="portalLink" onclick="redirectLink()" style="cursor: pointer;">qa.apackenvuedportal.com</a> 网址。</span></p>
+			<p><span style="font-weight:bold;">本网址的自动跳转将于2024年12月31日停止，请保存并直接使用新网址。</span></p>
+			</div>
+			<p><span style="font-weight:bold;">如需更多信息， 请联系科赴客户服务团队: <a href="mailto:﻿yjin69@kenvue.com">yjin69@kenvue.com</a> 或 <a href="mailto:﻿yzhan314@kenvue.com">yzhan314@kenvue.com</a></span></p>
+		</div>
+		<div class="close-btn" onclick="closePop()">
+			<img src='images/popup-close.png'>
+		</div>
+	</div>
+</body>
+</html>

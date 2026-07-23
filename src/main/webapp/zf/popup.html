@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+<base href="zf/">
+	<style>
+		.layerPopup {
+			z-index: 10000;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #FFFFFF;
+			width: 900px;
+			height: 530px;
+			padding: 30px;
+			box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.6), 0px 0px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.layerBox {
+			position: absolute;
+			width: 100%;
+			top: 54%;
+			left: 55%;
+			transform: translate(-50%, -50%);
+		}
+
+		.layerBox p {
+			font-size: 14px;
+		}
+
+		.layerPopup a{
+			text-decoration: underline;
+			color: #0000EE;
+			width: 50px;
+			height: 40px;
+		}
+
+		.notice_main {
+			margin-top: 28px;
+			margin-bottom: 28px;
+		}
+
+		.underline {
+			text-decoration: underline;
+			text-decoration-color: #000000;
+		}
+
+		.close-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+			font-size: 20px;
+		}
+		.popup-logo {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+	</style>
+
+	<script type='text/javascript' src='script/jquery.min.js'></script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			var count = 15;
+
+			var countdown = setInterval(function() {
+
+				$( "span#countdown" ).text( count );
+				if (count == 0) {
+					clearInterval(countdown);
+					parent.location.href = 'https://qa.apackenvuedportal.com';
+				}
+					count--;
+			}, 1000);
+		});
+
+		function closePop() {
+			parent.location.href = 'https://qa.apackenvuedportal.com';
+		}
+
+		function redirectLink() {
+			parent.location.href = 'https://qa.apackenvuedportal.com';
+		}
+	</script>
+</head>
+<body>
+	<div class="layerPopup" id="layer_popup">
+		<div class ='popup-logo'>
+			<img src='images/popup-logo.png'>
+		</div>
+			<div class='layerBox'>
+				<p class="countdown"></p>
+				<div class ='notice_main'>
+				<p>You will be routed to the new Kenvue Distributor Portal site in <span id="countdown"></span> seconds.</p>
+				</div>
+				<p>Dear User,</p>
+				<p>The Kenvue Distributor Portal has been redirected to a new URL <a id="portalLink" onclick="redirectLink()" style="cursor: pointer;">qa.apackenvuedportal.com</a> from 8th May 2024.</p>
+				<p><span style="font-weight:bold;">The re-direction from this current URL will <span class="underline">cease on 31st Dec 2024.</span> Please bookmark and use the new URL directly.</span></p>
+				<div class ='notice_main'>
+					<p>科赴经销商门户网站页面已于2024年5月8日迁移至新的网址。
+					<p>本网址的自动跳转将于2024年12月31日停止，请保存并直接使用新网址。
+				</div>
+				<div class ='notice_main'>
+					<p>Kenvue Distributor Portal 이 새로운 주소로 2024년 5월 8일부터 변경됩니다.</p>
+					<p>현재의 URL주소는 2024년 12월31일 부로 변경이 됩니다. 위의 새로운 주소로 반드시 변경을 부탁 드립니다.</p>
+				</div>
+				<div class ='notice_main'>
+					<p>เราขอเรียนให้ท่านทราบว่า เรากำลังจะย้าย เว็บไซต์พอร์ทัลผู้จัดจำหน่ายสินค้า KENVUE ไปที่URL ใหม่ ตั้งแต่วันที่ 8 พฤษภาคม 2567 เป็นต้นไป</p>
+					<p>ขอให้ท่านช่วยกรุณา ทำการเก็บ URL ใหม่เพื่อใช้ในครั้งต่อๆไป ทั้งนี้การเชื่อมต่ออัตโนมัต จาก URL เก่าและ URLใหม่ จะหยุดลงภายในวันที่ 31 ธันวาคม 2567</p>
+				</div>
+					<p><span style="font-weight:bold;">More information:</span></p>
+					<p>中国: <a href="mailto:﻿yjin69@kenvue.com">yjin69@kenvue.com</a><span style="font-weight:bold;"> 或 </span><a href="mailto:﻿yzhan314@kenvue.com">yzhan314@kenvue.com</a></p>
+					<p>한국: <a href="mailto:﻿DL-KENVUE-DELIVER-CS-TEAM@kenvue.com">DL-KENVUE-DELIVER-CS-TEAM@kenvue.com</a></p>
+					<p>ประเทศไทย: <a href="mailto:﻿DL-CONTH-Customers-Logistics@kenvue.com">DL-CONTH-Customers-Logistics@kenvue.com</a></p>
+			</div>
+			<div class="close-btn" onclick="closePop()">
+				<img src='images/popup-close.png'>
+			</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,226 @@
+/******************************************************
+Logic
+******************************************************/
+
+#sidebar {
+	display: none;
+	min-width: 15rem;/*250px*/
+	max-width: 15rem;/*250px*/
+	height: 100vh;
+	position: fixed;
+	z-index: 9999;
+}
+
+#sidebar.active {
+	display: block;
+	top: 0;
+	right: 0;
+	/* top layer */
+
+	/* theme */
+	background: #7386D5;
+	color: #fff;
+	overflow-y: scroll;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	/* full screen */
+	width: 100vw;
+	height: 100vh;
+	/* transparent block */
+	background: rgba(0, 0, 0, 0.7);
+	/* middle layer, i.e. apears below the side bar */
+	z-index: 998;
+	opacity: 0;
+	/* animate the transition */
+	transition: all 0.5s ease-in-out;
+	/* my try */
+}
+
+/* body { */
+/*	position: relative; */
+/*	display: block; */
+/* } */
+
+/* display .overlay when it has the .active class */
+.overlay.active {
+	display: block;
+	opacity: 1;
+	/* my try */
+	/* position: absolute; */
+	top: 0;
+	right: 15rem;
+	/* width: 100%; */
+	/* height: 100%; */
+	/* z-index: 10; */
+	/* background-color: rgba(0,0,0,0.5); /\*dim the background*\/ */
+}
+
+#dismiss {
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	/* top left corner of the side bar */
+	top: 10px;
+	left: 10px;
+	/*theme*/
+	line-height: 35px;
+	background: #7386D5;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	/*center content */
+	display:flex!important;
+	text-align: center;
+	align-items:center!important;
+	justify-content:center!important;
+}
+
+/******************************************************
+Theme
+******************************************************/
+
+/* #sidebar ul li a:hover { */
+/*	   color: white; */
+/*	   background: orange; */
+/* } */
+
+/* #sidebar ul li a { */
+/*	   padding: 10px; */
+/*	   font-size: 1.1em; */
+/*	   display: block; */
+/* } */
+
+/* #sidebar a[data-toggle="collapse"] { */
+/*	   position: relative; */
+/* } */
+
+/* #sidebar a, #sidebar a:hover, #sidebar a:focus { */
+/*	   color: inherit; */
+/*	   text-decoration: none; */
+/*	   transition: all 0.3s; */
+/* } */
+#dismiss:hover {
+	background: #fff;
+	color: #7386D5;
+}
+#sidebar .sidebar-header {
+	padding: 20px;
+	text-align:center;
+	background: #6d7fcc;
+}
+
+#sidebar ul.components {
+	padding: 20px 0;
+	border-bottom: 1px solid #47748b;
+	text-align: left;
+}
+
+#sidebar #sidebarMenu p[name=menuHeading] {
+	color: #fff;
+	padding: 10px;
+	margin-bottom: 0.2rem;
+}
+
+#sidebar {
+	color: #fff;
+}
+#sidebar div {
+	color: #fff;
+}
+#sidebar ul p {
+	color: #fff;
+	padding: 10px;
+}
+#sidebar a, #sidebar a:hover, #sidebar a:focus {
+	color: inherit;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+#sidebar ul li a {
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+
+#sidebar ul li a:hover,
+#sidebar ul li a.hover {
+	color: #7386D5;
+	background: #fff;
+}
+
+
+#sidebar ul li.active>a,
+#sidebar a[aria-expanded="true"] {
+	color: #fff;
+	background-color: #6d7fcc;
+}
+
+#sidebar ul.collapse.show li.active>a {
+	color: #6d7fcc;
+	background-color: #fff;
+}
+
+
+#sidebar a[data-toggle="collapse"] {
+	position: relative;
+}
+
+#sidebar .dropdown-toggle::after {
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+}
+
+#sidebar ul ul a {
+	font-size: 0.9em !important;
+	padding-left: 30px !important;
+	background: #6d7fcc;
+}
+
+/** Top Menu */
+
+#topMenuList .nav {
+	margin-bottom: 0;
+	padding-left: 0;/*override default ulol*/
+	list-style: none;
+}
+
+#topMenuList .nav > li {
+	position: relative;
+	display: block;
+}
+
+#topMenuList .nav > li > a {
+	position: relative;
+	display: block;
+	padding: 5px;/* todo */
+}
+
+#topMenuList .nav > li > a:hover,
+#topMenuList .nav > li > a:focus
+{
+	text-decoration: none;
+	background-color: orange;
+}
+
+#topMenuList .nav > li.disabled > a {
+	color: gray;
+}
+
+#topMenuList .nav > li.disabled > a:hover,
+#topMenuList .nav > li.disabled > a:focus
+{
+	color: lightgray;
+	text-decoration: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+

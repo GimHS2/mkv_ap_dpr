@@ -1,0 +1,369 @@
+/*
+ *	File Name:	menuhtml.css
+ *	Version:	2.2.0c(dpr)
+ *
+ *	Description:
+ *
+ *	Note:
+ *
+ *
+ *
+ *	Modified	(YYYY/MM/DD)	Ver		Content
+ *	jbaek		2017/09/30		2.2.0c	create
+**/
+
+/***********************************************************************************************************************
+	content-wrapper
+***********************************************************************************************************************/
+/* .content-wrapper {
+	width: 73%;73%: 2% is for the scrollbar
+	float: right;
+	padding-top: 2%;
+} */
+
+/***********************************************************************************************************************
+	menu-wrapper
+***********************************************************************************************************************/
+/* .menu-wrapper {
+	width: 25%;
+	height: 100%;
+	max-width: 350px;
+	float: left;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position:fixed; fixed: when the .content-wrapper is scrolled down, this .menu-wrapper will be fixed.
+}
+ */
+#menu-creator {
+	padding: 2px;
+}
+#menu-creator ul {
+	padding: 0;
+}
+#menu-creator li {
+	padding: 10px;
+}
+
+.menu-wrapper .pure-button i.fa {
+	margin-left: 3px;
+	margin-right: 3px;
+	font-size: larger;
+}
+
+.menu-wrapper .ctl-icon-box {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.menu-wrapper .ctl-edit-box {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.menu-wrapper .menu-editing {
+	list-style: none;
+}
+
+.menu-wrapper .menu-editing * {
+	list-style: none;
+}
+
+.menu-wrapper .menu-edit-wrapper .menuhtml {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.menu-wrapper .menu-edit-wrapper .menuhtml ul {
+	float:left;
+	display: inline-block;
+}
+
+.menu-wrapper .menu-edit-wrapper .menuhtml li {
+	float:left;
+	display: table-row;
+}
+
+.menu-wrapper .menu-edit-wrapper .menuhtml a.menu-top-link {
+	float:left;
+	display: inline-block;
+}
+
+.menu-wrapper .menu-edit-wrapper .menuhtml li {
+	float:left;
+	display: inline-block;
+}
+
+.menu-wrapper a.has-not-menu-link {
+	pointer-events: none;
+	color: grey;
+	text-decoration: none;
+}
+
+.menu-wrapper a.has-not-menu-message {
+	color: white;
+	background-color: black;
+}
+
+.menu-wrapper .menuhtml-hide {
+	display: none;
+}
+
+.menu-wrapper .menuhtml-editing ul {
+	margin: 0;
+	padding: 0;
+}
+
+.menu-wrapper .menuhtml-editing li {
+	margin: 0;
+	padding-left: 5px;
+}
+
+.menu-wrapper .menuhtml-editing li.is-not-valid > :not(ul){
+	outline: 1px dashed red !important;
+	fill: red !important;
+}
+
+.menu-wrapper .menuhtml-editing ul.menu-top[data-has-link='false'] > .ctl-icon-box > i.fa-link {
+	color: red;
+}
+
+.menu-wrapper .menuhtml-editing [data-has-link='true'] > .ctl-icon-box > i.fa-link {
+	color: blue;
+}
+
+.menu-wrapper .menuhtml-editing :not([data-menu-message]) > .ctl-icon-box > i.fa-edit {
+	color: red;
+}
+
+.menu-wrapper .menuhtml li > i.fa-arrows {
+	display:none;
+}
+.menu-wrapper .menuhtml .ctl-icon-box {
+	display:none;
+}
+
+
+/***********************************************************************************************************************
+	menuhtml
+***********************************************************************************************************************/
+/*
+.menuhtml {
+	width: 100%;
+}
+
+.menuhtml ul > li {
+	display: block;
+	width: 100%;
+	margin: 0;
+}
+
+.menuhtml ul.menu-top {
+	border-bottom-color: black;
+	border-bottom-style: solid;
+	font-size: large;
+	padding-top:10px;
+	border-top-style: none;
+}
+
+.menuhtml ul.menu-top > li {
+	padding-top: 5px;
+}
+
+.menuhtml ul.menu-level-0 {
+	padding-left: 2.5;
+}
+.menuhtml ul.menu-level-1 {
+	padding-left: 5;
+}
+.menuhtml ul.menu-level-2 {
+	padding-left: 7.5;
+}
+.menuhtml ul.menu-level-3 {
+	padding-left: 10;
+}
+.menuhtml ul.menu-level-4 {
+	padding-left: 12.5;
+}
+.menuhtml ul.menu-level-5 {
+	padding-left: 15;
+}
+
+.menuhtml ul > li > a {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.menuhtml ul > li {
+	list-style: none;
+	float:left;
+}
+
+.menuhtml ul > li > a {
+	display: block;
+	padding: 21px 10px;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.25s linear;
+	-moz-transition: all 0.25s linear;
+	-o-transition: all 0.25s linear;
+	transition: all 0.25s linear;
+}
+
+.menuhtml ul > li > a:hover, .menuhtml > li > a:focus {
+	background: #F2F2F2;
+	box-shadow: inset 0px 5px #51C1F1;
+	color: #51C1F1;
+	padding: 25px 10px 17px;
+}
+
+.menuhtml ul {
+	background: #FFFFFF;
+	border-top: 1px solid #51C1F1;
+}
+
+.menuhtml ul, .menuhtml ul > li, .menuhtml ul > li > a {
+	height: auto;
+}
+
+.menuhtml ul > li > a {
+	padding: 5px 5px;
+}
+
+.menuhtml ul > li > a:hover, .menuhtml ul > li > a:focus {
+	background: #F2F2F2;
+	box-shadow: inset 5px 0px #51C1F1;
+	padding: 5px 5px 5px 10px;
+}
+
+.menuhtml ul > li > a.active {
+	background: #F2F2F2;
+	box-shadow: inset 5px 0px red;
+	padding: 5px 5px 5px 10px;
+}
+*/
+
+
+/***********************************************************************************************************************
+	ICSBoard_FQ_*.menuhtml
+***********************************************************************************************************************/
+div[id^='ICSBoard_FQ'].menuhtml *, div[id^='ICSBoard_FQ'].menuhtml li, div[id^='ICSBoard_FQ'].menuhtml a:link {
+	font-size: 12px;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml {
+	width: 100%;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul > li {
+	display: block;
+	width: 100%;
+	margin: 0;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-top {
+	border-bottom-color: #fa8531;
+	border-bottom-style: solid;
+	font-size: large;
+	padding-top:10px;
+	border-top-style: none;
+	margin-bottom: 20px;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-top a {
+	padding-left: 10px;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-top > li {
+	padding-top: 5px;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-0 {
+	padding-left: 10.5;
+	padding-right: 20px;
+	font-weight: bold;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-1 {
+	padding-left: 5;
+}
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-2 {
+	padding-left: 7.5;
+}
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-3 {
+	padding-left: 10;
+}
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-4 {
+	padding-left: 12.5;
+}
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-5 {
+	padding-left: 15;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul > li > a {
+	display: block;
+	width: 100%;
+	text-decoration: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul > li {
+	list-style: none;
+	float:left;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul > li > a {
+	display: block;
+	padding: 7px 10px;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 1;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.25s linear;
+	-moz-transition: all 0.25s linear;
+	-o-transition: all 0.25s linear;
+	transition: all 0.25s linear;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-0 > li, div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-0 > li > a:link {
+	color: #8a8a8a;
+	font-weight: bold;
+	font-size: 13px;
+	border-bottom: 1px solid #cdcdcd;
+	padding: 10px 0 10px 5px;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-1 > li, div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-1 > li > a:link {
+	color: #727272;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-1 > li > a.active {
+	color: #c84936;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-0 > li > a:active, div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-0 > li > a:hover,
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-1 > li > a:active, div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-1 > li > a:hover,
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-2 > li > a:active, div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-2 > li > a:hover {
+	color: #c84936;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul > li > a.active {
+	color: #c84936;
+}
+
+div[id^='ICSBoard_FQ'].menuhtml ul.menu-level-1 a {
+	padding-left: 10px;
+}

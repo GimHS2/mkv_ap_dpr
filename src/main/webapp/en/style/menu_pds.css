@@ -1,0 +1,332 @@
+/*
+ *	File Name:	menu_pds.css
+ *	Version:	2.2.1
+ *
+ *	Description:
+ *
+ *	Note:
+ *
+ *	Modified	(YYYY/MM/DD)	Ver		Content
+ *	stghr12		2008/03/31		2.2.1	정리
+ *	stghr12		2007/11/30		2.2.0	create(영문용)
+**/
+
+
+/***********************************************************************************************************************
+	public
+***********************************************************************************************************************/
+div {
+	scrollbar-face-color: #E8E8E8;
+	scrollbar-shadow-color: #FFFFFF;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-3dlight-color: #E8E8E8;
+	scrollbar-darkshadow-color: #BDBDBD;
+	scrollbar-track-color: transparent;
+	scrollbar-arrow-color: #31B5F7;
+	scrollbar-arrow-color: #DB8E00;
+}
+
+A:link		{ color: #9F682B; text-decoration: none; }
+A:visited	{ color: #9F682B; text-decoration: none; }
+A:active	{ color: #9F682B; text-decoration: none; }
+A:hover		{ color: #9F682B; text-decoration: none; }
+
+th {
+	background-color: #FFF2D7;
+	border-bottom: 1px solid #DB8E00;
+}
+
+
+/***********************************************************************************************************************
+	body
+***********************************************************************************************************************/
+body {
+	width: 100%;
+	margin-top: 15px; margin-right: 25px;
+	margin-bottom: 10px; margin-left: 25px
+}
+
+
+/***********************************************************************************************************************
+	header( title/msg )
+***********************************************************************************************************************/
+td.title {
+	font: bold 18px; color: #555555;
+	height: 26px;
+	padding-top: 0px; padding-left: 15px;
+}
+
+td.page_env {
+	text-align: right; vertical-align: bottom;
+	height: 26px;
+	padding-top: 1px; padding-right: 5px;
+}
+
+table.msg {
+	margin-top: 10px; margin-bottom: 0px;
+}
+pre#msg {
+	font-weight: bold; color: #F90000;
+	height: 16px;
+	margin: 0px;
+}
+
+
+/***********************************************************************************************************************
+	button
+***********************************************************************************************************************/
+table.btn_page {
+	width: 100%; height: 35px;
+	margin-top: 5px;
+	padding: 5px;
+}
+
+
+/***********************************************************************************************************************
+	catelink
+***********************************************************************************************************************/
+span.cate_link a:hover {
+	background: #FFF8EB;
+	border: 1px dotted #FFB36F;
+}
+
+
+/***********************************************************************************************************************
+	info/input
+***********************************************************************************************************************/
+.mandatory {
+	font-weight: bold; color: #0E8F01;
+}
+
+.mandatory_u {
+	font-weight: bold; color: #B50000;
+}
+
+table.info_content {
+	border-top: 3px solid #DB8E00; border-bottom: 1px solid #DB8E00;
+	border-left: 1px solid #DB8E00; border-right: 1px solid #DB8E00;
+	margin-top: 10px; margin-bottom: 10px;
+}
+
+td.subject0, td.subject {
+	background-color: #FFE6C4;
+}
+
+td.content0, td.content1, td.content2, td.content3, td.content3_c, td.content3_2, td.content4, td.content4_2, td.content4_3 {
+	background-color: #FFFAF0;
+}
+
+
+/***********************************************************************************************************************
+	input/select
+***********************************************************************************************************************/
+input.content_m, select.content_m, textarea.content_m {
+	background-color: #FFFFDC;
+}
+
+input.content_omod, select.content_omod, textarea.content_omod, input.content_mmod, select.content_mmod, textarea.content_mmod {
+	background-color: #9FCECA;
+}
+
+input.content_mod, select.content_mod, input.content_mmod, select.content_mmod {
+	border: 1px solid #8D8D8D;
+}
+
+input.readonly, select.readonly, textarea.readonly {
+	background-color: #C1C1C1;
+}
+
+
+/***********************************************************************************************************************
+	search
+***********************************************************************************************************************/
+table.search_content {
+	background: #F7F7F7;
+	border-top: 2px solid #DB8E00; border-bottom: 1px solid #DB8E00;
+	border-left: 1px solid #DB8E00; border-right: 1px solid #DB8E00;
+	padding-top: 5px; padding-bottom: 5px;
+	padding-left: 5px; padding-right: 15px;
+}
+
+td.search_subject {
+	font: bold; color: #AB7500;
+	padding-left: 10px; padding-right: 5px;
+}
+
+
+/***********************************************************************************************************************
+	list
+***********************************************************************************************************************/
+div.list_content {
+	margin-top: 10px; margin-bottom: 10px;
+	margin-right: -16px;
+}
+
+span#page_index {
+	font-weight: bold; color: #DB8E00;
+}
+
+span#page_index_link {
+	color: #999999;
+}
+
+table.list_content_header {
+	border-top: 3px solid #DB8E00; border-bottom: 0px solid #DB8E00;
+	border-left: 1px solid #DB8E00; border-right: 1px solid #DB8E00;
+	margin-top: 2px;
+}
+
+table.list_content_data {
+	border-top: 0px solid; border-bottom: 0px solid;
+	border-left: 1px solid #DB8E00; border-right: 1px solid #DB8E00;
+}
+
+table.list_content_summary {
+	border-top: 0px solid; border-bottom: 0px solid;
+	border-left: 1px solid #DB8E00; border-right: 1px solid #DB8E00;
+}
+
+table.list_content_function {
+	background-color: #F3F3F3;
+	border-top: 0px solid; border-bottom: 1px solid #DB8E00;
+	border-left: 1px solid #DB8E00; border-right: 1px solid #DB8E00;
+	padding-top: 4px; padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+table.list_content_bottom {
+	margin-top: 10px;
+}
+
+tr.mouseover {
+	background-color: #FFF8EB;
+}
+
+tr.selected {
+	background-color: #E9E9E9;
+}
+
+
+/***********************************************************************************************************************
+	list(XY)
+***********************************************************************************************************************/
+div.list_content_xy_header_top, td.list_content_xy_header_top {
+	height: 3px;
+	border-top: 3px solid #DB8E00;
+}
+
+table.list_content_xy {
+	border-left: 1px solid #DB8E00;
+	margin-top: 2px;
+}
+
+td.list_content_xy_d, th.list_content_xy_d {
+	border-right: 1px solid #DB8E00;
+}
+
+td.list_content_xy_f_d {
+	border-right: 1px solid #DB8E00;
+}
+
+
+/***********************************************************************************************************************
+	column
+***********************************************************************************************************************/
+col.count_s, col.percent_s, col.price_s, col.qty_s {
+	text-align: right;
+	width: 50px;
+}
+
+col.abc, col.rank {
+	text-align: center;
+	width: 35;
+}
+
+
+/***********************************************************************************************************************
+	tab-pane
+***********************************************************************************************************************/
+.dynamic-tab-pane-control caption {
+	background: url(../images/ico_pds_tab_caption.gif) no-repeat left 2px;
+	padding-left: 6px;
+}
+
+.tabpane .tab-page {
+	height: 378;
+	background: #FFFDF8;
+	border: 1px solid #AF7201;
+}
+
+.tabpane_tabrow .tab {
+	background: url(../images/ico_tab.gif) repeat-x;
+	border: 1px solid #AF7201; border-bottom: 0px;
+}
+
+.tabpane_tabrow .hover {
+	background: url(../images/ico_pds_tab_active.gif) repeat-x;
+	border: 1px solid #AF7201; border-bottom: 0px;
+}
+
+.tabpane_tabrow .selected {
+	background: url(../images/ico_pds_tab_active.gif) repeat-x;
+	border: 1px solid #AF7201; border-bottom: 0px;
+}
+
+
+/***********************************************************************************************************************
+	PDS analyze
+***********************************************************************************************************************/
+tr.pds_axis_x, tr.pds_axis_x_stot, tr.pds_axis_y, tr.pds_axis_y_stot, tr.pds_data, tr.pds_data_stot, tr.pds_data_mouseover, tr.pds_summary {
+	height: 21px;
+	padding-left: 2px; padding-right: 2px;
+}
+
+tr.pds_header {
+	min-height: 25px;
+}
+
+tr.pds_data_mouseover {
+	background-color: #FFF8EB;
+}
+
+tr.pds_summary {
+	background-color: #E9E9E9;
+}
+
+th.pds_axis_xy {
+	border-bottom: 1px solid #C1C1C1;
+}
+
+th.pds_axis_x_mouseover {
+	background-color: #FFF8EB;
+}
+
+td.pds_axis_y, td.pds_axis_y_stot, td.pds_axis_y_mouseover {
+	border-top: 1px solid #FFFFFF; border-bottom: 1px solid #C1C1C1;
+	border-left: 0px solid; border-right: 1px solid #C1C1C1;
+}
+
+td.pds_axis_y_stot {
+	background-color: #EFEFEF;
+	text-align: center;
+}
+
+td.pds_axis_y_summary {
+	background-color: #E9E9E9;
+	text-align: center;
+}
+
+td.pds_axis_y_mouseover {
+	background-color: #FFF8EB;
+}
+
+tr.pds_data_stot td {
+	background-color: #EFEFEF;
+}
+
+td.pds_list_msg {
+	background-color: #F3F3F3;
+	font-weight: bold;
+	text-align: center;
+	height: 30px;
+}
