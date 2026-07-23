@@ -168,9 +168,28 @@ public class OrderLogging {
 		return fullPrefix;
 	}
 
+	private String sanitizeFileComponent( String value ) {
+		if( value == null )
+			return "EMPTY";
+
+		String normalized = value.trim();
+		if( normalized.length() == 0 )
+			return "EMPTY";
+
+		normalized = normalized.replace('/', '_').replace('\\', '_');
+		while( normalized.indexOf("..") >= 0 )
+			normalized = normalized.replace("..", "_");
+
+		normalized = normalized.replaceAll("[^A-Za-z0-9._-]", "_");
+		if( normalized.length() == 0 )
+			return "EMPTY";
+
+		return normalized;
+	}
+
 	public File getFile( String processType, String prefix ) {
 		String times = dateFormat.format( new java.util.Date( System.currentTimeMillis() ) );
-		String fullPreFix = getProcessPrefix( processType, prefix );
+		String fullPreFix = getProcessPrefix( processType, sanitizeFileComponent(prefix) );
 
 		String fileName = tempPath + "/" + processType + "/" + fullPreFix + "_" + times + ".xml";
 
