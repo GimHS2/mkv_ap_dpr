@@ -100,7 +100,7 @@ public class OrderLogging {
 	}
 
 	public Document makeOrderTraceFile( File file, String data ) {
-		if( file == null || !Utility.isValidateFile(file) ) {
+		if( file == null || !Utility.isValidateFile(file) || !isFileUnderTempPath(file) ) {
 			logger.error( "Can't make XML file: invalid file path" );
 			return null;
 		}
@@ -199,6 +199,24 @@ public class OrderLogging {
 		return false;
 	}
 
+	private boolean isFileUnderTempPath( File file ) {
+		if( file == null || tempPath == null || tempPath.trim().length() == 0 )
+			return false;
+
+		try {
+			File canonicalBaseDir = new File( tempPath ).getCanonicalFile();
+			File canonicalFile = file.getCanonicalFile();
+
+			String basePath = canonicalBaseDir.getPath();
+			String candidatePath = canonicalFile.getPath();
+
+			return candidatePath.equals(basePath) || candidatePath.startsWith(basePath + File.separator);
+		} catch( IOException ioEx ) {
+			logger.error( ioEx );
+			return false;
+		}
+	}
+
 	public File getFile( String processType, String prefix ) {
 		String times = dateFormat.format( new java.util.Date( System.currentTimeMillis() ) );
 
@@ -211,7 +229,7 @@ public class OrderLogging {
 			if( !Utility.isSafeFileName(fullPreFix) )
 				throw new IllegalArgumentException( "Invalid file prefix" );
 
-			File baseDir = new File( tempPath );
+			File baseDir = new File( this.tempPath );
 			File processDir = new File( baseDir, processType );
 			File candidateFile = new File( processDir, fullPreFix + "_" + times + ".xml" );
 
