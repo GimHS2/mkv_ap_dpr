@@ -85,16 +85,25 @@ public class RBMWorkbookPicture {
 	 */
 	public static int addPictureData( Workbook wb, ClassLoader classLoader, String imageInClasspath ) throws IOException {
 		// ClassPathResource resource = new ClassPathResource( "com/irt/dpr/DPRBillingReport_External.png" );
-		if( imageInClasspath == null || !imageInClasspath.matches("^com/irt/dpr/[A-Za-z0-9_-]+\\.(?i:png|jpg|jpeg|gif|bmp)$") )
+		if( imageInClasspath == null )
+			throw new IOException( "Invalid classpath resource path: " + imageInClasspath );
+
+		String normalizedInput = imageInClasspath.replace( '\\', '/' );
+		if( normalizedInput.startsWith("/") || normalizedInput.contains("..") || normalizedInput.contains("//") )
+			throw new IOException( "Invalid classpath resource path: " + imageInClasspath );
+
+		java.nio.file.Path normalizedPath = java.nio.file.Paths.get(normalizedInput).normalize();
+		String safeClasspathPath = normalizedPath.toString().replace('\\', '/');
+		if( !safeClasspathPath.matches("^com/irt/dpr/[A-Za-z0-9_-]+\\.(?i:png|jpg|jpeg|gif|bmp)$") )
 			throw new IOException( "Invalid classpath resource path: " + imageInClasspath );
 
 		InputStream inputStream = null;
 		try {
-			inputStream = classLoader.getResourceAsStream( imageInClasspath );
+			inputStream = classLoader.getResourceAsStream( safeClasspathPath );
 			if( inputStream == null )
-				throw new IOException( "Classpath resource not found: " + imageInClasspath );
+				throw new IOException( "Classpath resource not found: " + safeClasspathPath );
 			byte[] pictureData = IOUtil.readFully( inputStream );
-			String extension = StringUtil.getFileExtension( imageInClasspath );
+			String extension = StringUtil.getFileExtension( safeClasspathPath );
 			int typeIdx = getPictureTypeByExtension( extension );
 
 			return wb.addPicture( pictureData, typeIdx );
