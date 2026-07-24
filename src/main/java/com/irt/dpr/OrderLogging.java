@@ -100,6 +100,11 @@ public class OrderLogging {
 	}
 
 	public Document makeOrderTraceFile( File file, String data ) {
+		if( file == null ) {
+			logger.error( "Can't make XML file: invalid file path" );
+			return null;
+		}
+
 		java.io.PrintWriter out = null;
 		try {
 			Utility.validateFile( file );
@@ -204,7 +209,7 @@ public class OrderLogging {
 				throw new IllegalArgumentException( "Invalid process type" );
 
 			String fullPreFix = getProcessPrefix( processType, sanitizeFileComponent(prefix) );
-			if( Utility.isSafeFileName(fullPreFix) )
+			if( !Utility.isSafeFileName(fullPreFix) )
 				throw new IllegalArgumentException( "Invalid file prefix" );
 
 			File baseDir = new File( tempPath );
