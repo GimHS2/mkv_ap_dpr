@@ -221,10 +221,13 @@ public class Utility {
 			if( !canonicalPath.equals(canonicalAbsolutePath) )
 				return false;
 
-			if( !canonicalFile.exists() || (!canonicalFile.isFile() && !canonicalFile.isDirectory()) || !canonicalFile.canRead() )
+			if( !isSafeFilePath(canonicalPath) || !isSafeFilePath(canonicalAbsolutePath) )
 				return false;
 
-			if( !isSafeFilePath(canonicalPath) || !isSafeFilePath(canonicalAbsolutePath) )
+			if( canonicalPath.indexOf('\0') >= 0 || canonicalPath.contains("..") )
+				return false;
+
+			if( !canonicalFile.exists() || (!canonicalFile.isFile() && !canonicalFile.isDirectory()) || !canonicalFile.canRead() )
 				return false;
 
 			return true;
