@@ -176,9 +176,13 @@ public abstract class RBMWorkbook extends RBMDatabook {
 		if( file == null || !Utility.isValidateFile(file) )
 			throw new IOException( DataException.ERR_IO_XLX_INVALID_FORMAT_EXCEPTION );
 
+		java.io.File canonicalFile = file.getCanonicalFile();
+		if( !canonicalFile.equals(file.getAbsoluteFile()) || !canonicalFile.isFile() || !canonicalFile.canRead() )
+			throw new IOException( DataException.ERR_IO_XLX_INVALID_FORMAT_EXCEPTION );
+
 		Workbook wb = null;
 		try {
-			wb = WorkbookFactory.create(file);
+			wb = WorkbookFactory.create(canonicalFile);
 		} catch( InvalidFormatException ex ) {
 			throw new IOException( DataException.ERR_IO_XLX_INVALID_FORMAT_EXCEPTION, ex );
 		}
