@@ -298,9 +298,29 @@ public abstract class RBMDatabook implements DataReader, DataWriter {
 	/** DataReader return
 	 * XLF형식( xlsx로 업로드시 )에 upload파일에서 첫번째 시트만 읽어서 처리함.
 	 */
+	private static File validateAndResolveInputFile( File inputFile ) throws IOException {
+		if( inputFile == null )
+			throw new IOException( DataException.ERR_IO_INVALID_REQUEST_FILETYPE );
+
+		File canonicalFile = inputFile.getCanonicalFile();
+		if( !canonicalFile.exists() || !canonicalFile.isFile() || !canonicalFile.canRead() )
+			throw new IOException( DataException.ERR_IO_INVALID_REQUEST_FILETYPE );
+
+		// Uploaded files are expected to be created in temp area; block path traversal/out-of-scope files.
+		File tempRoot = new File( System.getProperty("java.io.tmpdir") ).getCanonicalFile();
+		String filePath = canonicalFile.getPath();
+		String tempPath = tempRoot.getPath() + File.separator;
+		if( !filePath.startsWith(tempPath) )
+			throw new IOException( DataException.ERR_IO_INVALID_REQUEST_FILETYPE );
+
+		return canonicalFile;
+	}
+
 	protected static DataReader getDataReader( java.io.File inputFile, String fileType, String encoding, char encap ) throws DataException, IOException {
 		if( !isValidFileType(fileType) )
 			throw new IOException( DataException.ERR_IO_INVALID_REQUEST_FILETYPE );
+
+		inputFile = validateAndResolveInputFile( inputFile );
 
 		DataReader reader = null;
 		FileInputStream inputStream = null;
