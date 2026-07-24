@@ -57,6 +57,7 @@ import com.irt.servlet.ServletModelException;
 import com.irt.system.SessionManagerException;
 import com.irt.util.DaoManager;
 import com.irt.util.MapUtil;
+import com.irt.util.Utility;
 
 /**
  *
@@ -321,8 +322,7 @@ public abstract class DPRServletModel extends AbstractServletModel {//@formatter
 
 	public String getSavedOrganizationCode( Context ctx ) {
 		String organizationCode = ctx.req.getParameter( "organizationCode" );
-		if( organizationCode == null || organizationCode.length() == 0 || organizationCode.indexOf(">") >= 0
-				|| organizationCode.indexOf("+") >= 0 || organizationCode.indexOf(";") >= 0 )
+		if( !Utility.isSafeCodeToken(organizationCode) )
 			organizationCode = ctx.sessionMng.getExtraValue();
 
 		// not in session manager. find possible organization code for session user.
@@ -367,14 +367,15 @@ public abstract class DPRServletModel extends AbstractServletModel {//@formatter
 
 	public String getDivisionCode( Context ctx ) throws SQLException, ServletModelException {
 		String divisionCode = ctx.req.getParameter( "divisionCode" );
+		if( !Utility.isSafeCodeToken(divisionCode) )
+			divisionCode = null;
 
 		return com.irt.rbm.RBMSystem.getSystemEnv( "DPR", "Default;division", divisionCode );
 	}
 
 	public String getDistributionChannelCode( Context ctx ) throws SQLException, ServletModelException {
 		String distributionChannelCode = ctx.req.getParameter( "distributionChannelCode" );
-		if( distributionChannelCode == null || distributionChannelCode.length() == 0 || distributionChannelCode.indexOf("<") >= 0 || distributionChannelCode.indexOf(">") >= 0
-				|| distributionChannelCode.indexOf("+") >= 0 || distributionChannelCode.indexOf(";") >= 0 )
+		if( !Utility.isSafeCodeToken(distributionChannelCode) )
 			distributionChannelCode = com.irt.rbm.RBMSystem.getSystemEnv( "DPR", "Default;distributionChannel" );
 
 		return distributionChannelCode;
@@ -523,7 +524,7 @@ public abstract class DPRServletModel extends AbstractServletModel {//@formatter
 		if( localeString != null && localeString.length() > 0 ) {
 			String[] locales = localeString.split( "_", 3 );
 
-			if( locales.length >= 1 )
+			if( locales.length >= 1 && locales[0] != null && locales[0].matches("^[A-Za-z]{2,8}$") )
 				displayLanguage = locales[0];
 		}
 
@@ -564,6 +565,8 @@ public abstract class DPRServletModel extends AbstractServletModel {//@formatter
 
 	public String getUserCountryCode( Context ctx ) throws ServletModelException {
 		String countryCode = ctx.req.getParameter( "countryCode" );
+		if( !Utility.isSafeCodeToken(countryCode) )
+			countryCode = null;
 
 		return ((countryCode != null && countryCode.length() > 0) ? countryCode : ctx.sessionMng.getUserExtraValue(0) );
 	}
