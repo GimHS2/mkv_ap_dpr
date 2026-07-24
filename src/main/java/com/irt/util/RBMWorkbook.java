@@ -173,7 +173,7 @@ public abstract class RBMWorkbook extends RBMDatabook {
 	}
 
 	public static final Workbook createWorkbook( java.io.File file ) throws IOException {
-		if( file == null ||  !Utility.isValidateFile(file) )
+		if( file == null || !Utility.isValidateFile(file) )
 			throw new IOException( DataException.ERR_IO_XLX_INVALID_FORMAT_EXCEPTION );
 
 		Workbook wb = null;

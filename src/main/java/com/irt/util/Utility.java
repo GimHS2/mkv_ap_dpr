@@ -213,7 +213,7 @@ public class Utility {
 			String canonicalPath = canonicalFile.getPath();
 			String absolutePath = file.getAbsolutePath();
 
-			if( canonicalPath == null || absolutePath == null || !canonicalPath.equals(new File(absolutePath).getCanonicalPath())
+			if( canonicalPath == null || absolutePath == null || !canonicalPath.equals(file.getAbsoluteFile().getPath())
 					|| !isSafeFilePath(canonicalPath) || !isSafeFilePath(absolutePath) )
 				return false;
 

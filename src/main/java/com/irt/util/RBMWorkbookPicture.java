@@ -85,7 +85,7 @@ public class RBMWorkbookPicture {
 	 */
 	public static int addPictureData( Workbook wb, ClassLoader classLoader, String imageInClasspath ) throws IOException {
 		// ClassPathResource resource = new ClassPathResource( "com/irt/dpr/DPRBillingReport_External.png" );
-		if( imageInClasspath == null || !imageInClasspath.matches("^com/irt/dpr/[A-Za-z0-9_-]+\\.") )
+		if( imageInClasspath == null || !imageInClasspath.matches("^com/irt/dpr/[A-Za-z0-9_-]+\\.(?i:png|jpg|jpeg|gif|bmp)$") )
 			throw new IOException( "Invalid classpath resource path: " + imageInClasspath );
 
 		InputStream inputStream = null;
