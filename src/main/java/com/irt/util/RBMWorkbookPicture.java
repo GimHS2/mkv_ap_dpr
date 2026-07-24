@@ -21,7 +21,6 @@ import java.lang.reflect.Method;
 import java.net.URI;
 
 import org.apache.poi.POIXMLDocumentPart;
-import org.apache.poi.POIXMLRelation;
 import org.apache.poi.openxml4j.opc.PackageRelationship;
 import org.apache.poi.openxml4j.opc.TargetMode;
 import org.apache.poi.ss.usermodel.*;
@@ -86,16 +85,14 @@ public class RBMWorkbookPicture {
 	 */
 	public static int addPictureData( Workbook wb, ClassLoader classLoader, String imageInClasspath ) throws IOException {
 		// ClassPathResource resource = new ClassPathResource( "com/irt/dpr/DPRBillingReport_External.png" );
-		if( !Utility.isSafeClassPath(imageInClasspath) ) {
-			throw new IOException( "Invalid classpath resource path: "+ imageInClasspath );
-		}
+		if( imageInClasspath == null || !imageInClasspath.matches("^com/irt/dpr/[A-Za-z0-9_-]+\\.") )
+			throw new IOException( "Invalid classpath resource path: " + imageInClasspath );
 
 		InputStream inputStream = null;
 		try {
 			inputStream = classLoader.getResourceAsStream( imageInClasspath );
-			if( inputStream == null ) {
+			if( inputStream == null )
 				throw new IOException( "Classpath resource not found: " + imageInClasspath );
-			}
 			byte[] pictureData = IOUtil.readFully( inputStream );
 			String extension = StringUtil.getFileExtension( imageInClasspath );
 			int typeIdx = getPictureTypeByExtension( extension );

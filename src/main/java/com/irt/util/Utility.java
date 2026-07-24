@@ -224,20 +224,6 @@ public class Utility {
 		}
 	}
 
-	public static boolean isSafeClassPath( String classPath ) {
-		if( classPath == null )
-			return false;
-
-		String normalized = classPath.trim();
-		if( normalized.length() == 0 )
-			return false;
-
-		return normalized.indexOf('\0') < 0
-				&& normalized.indexOf("..") < 0
-				&& normalized.indexOf('\\') < 0
-				&& normalized.matches("^[A-Za-z0-9_-]{1,128}$");
-	}
-
 	public static boolean isSafeFilePath( String path ) {
 		if( path == null )
 			return false;
