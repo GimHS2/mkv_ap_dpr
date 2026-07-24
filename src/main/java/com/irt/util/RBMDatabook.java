@@ -299,7 +299,7 @@ public abstract class RBMDatabook implements DataReader, DataWriter {
 	 * XLF형식( xlsx로 업로드시 )에 upload파일에서 첫번째 시트만 읽어서 처리함.
 	 */
 	protected static DataReader getDataReader( java.io.File inputFile, String fileType, String encoding, char encap ) throws DataException, IOException {
-		if( !isValidFileType(fileType) || !Utility.isValidateFile(inputFile) )
+		if( !isValidFileType(fileType) )
 			throw new IOException( DataException.ERR_IO_INVALID_REQUEST_FILETYPE );
 
 		DataReader reader = null;

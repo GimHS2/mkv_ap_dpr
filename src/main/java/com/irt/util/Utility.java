@@ -204,38 +204,6 @@ public class Utility {
 		}
 	}
 
-	public static boolean isValidateFile( File file ) {
-		try {
-			if( file == null )
-				return false;
-
-			File canonicalFile = file.getCanonicalFile();
-			File canonicalAbsoluteFile = file.getAbsoluteFile().getCanonicalFile();
-
-			String canonicalPath = canonicalFile.getPath();
-			String canonicalAbsolutePath = canonicalAbsoluteFile.getPath();
-
-			if( canonicalPath == null || canonicalAbsolutePath == null )
-				return false;
-
-			if( !canonicalPath.equals(canonicalAbsolutePath) )
-				return false;
-
-			if( !isSafeFilePath(canonicalPath) || !isSafeFilePath(canonicalAbsolutePath) )
-				return false;
-
-			if( canonicalPath.indexOf('\0') >= 0 || canonicalPath.contains("..") )
-				return false;
-
-			if( !canonicalFile.exists() || (!canonicalFile.isFile() && !canonicalFile.isDirectory()) || !canonicalFile.canRead() )
-				return false;
-
-			return true;
-		} catch( Exception ex ) {
-			return false;
-		}
-	}
-
 	public static boolean isSafeCodeToken( String code ) {
 		return (code != null && code.length() > 0 && code.matches("^[A-Za-z0-9_-]+$"));
 	}
@@ -277,7 +245,7 @@ public class Utility {
 			serverFile = new File( baseDir, fileName ).getCanonicalFile();
 			String basePath = baseDir.getPath();
 			String targetPath = serverFile.getPath();
-			if( !( targetPath.equals(basePath) || targetPath.startsWith(basePath + File.separator) || isValidateFile(serverFile) ) )
+			if( !( targetPath.equals(basePath) || targetPath.startsWith(basePath + File.separator) ) )
 				return false;
 		} catch( IOException ex ) {
 			throw new IllegalArgumentException( ex );

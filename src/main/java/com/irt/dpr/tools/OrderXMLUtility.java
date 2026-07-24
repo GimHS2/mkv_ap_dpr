@@ -111,7 +111,7 @@ public class OrderXMLUtility {
 	}
 
 	public static void documentWriteFile( java.io.File file, Document document, Logger logger ) {
-		if( file == null || !Utility.isValidateFile(file) )
+		if( file == null )
 			throw new IllegalArgumentException( "invalid file" );
 
 		java.io.PrintWriter out = null;
