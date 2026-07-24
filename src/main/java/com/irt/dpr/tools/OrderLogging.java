@@ -191,11 +191,24 @@ public class OrderLogging {
 		String times = dateFormat.format( new java.util.Date( System.currentTimeMillis() ) );
 		String fullPreFix = getProcessPrefix( processType, sanitizeFileComponent(prefix) );
 
-		String fileName = tempPath + "/" + processType + "/" + fullPreFix + "_" + times + ".xml";
-
 		File file = null;
 		try {
-			file = new File( fileName );
+			File baseDir = new File( tempPath );
+			File processDir = new File( baseDir, processType );
+			File candidateFile = new File( processDir, fullPreFix + "_" + times + ".xml" );
+
+			File canonicalBaseDir = baseDir.getCanonicalFile();
+			File canonicalCandidateFile = candidateFile.getCanonicalFile();
+
+			String basePath = canonicalBaseDir.getPath();
+			String candidatePath = canonicalCandidateFile.getPath();
+
+			if( candidatePath == null || basePath == null
+					|| !(candidatePath.equals(basePath) || candidatePath.startsWith(basePath + File.separator)) ) {
+				throw new IllegalArgumentException( "Invalid file path" );
+			}
+
+			file = canonicalCandidateFile;
 		} catch( Exception ex ) {
 			logger.error( ex );
 		}
