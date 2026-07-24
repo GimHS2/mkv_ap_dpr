@@ -204,10 +204,10 @@ public class Utility {
 		}
 	}
 
-	public static void validateFile( File file ) {
+	public static boolean isValidateFile( File file ) {
 		try {
 			if( file == null )
-				throw new IllegalArgumentException( "Invalid file(null)" );
+				return false;
 
 			File canonicalFile = file.getCanonicalFile();
 			String canonicalPath = canonicalFile.getPath();
@@ -215,12 +215,12 @@ public class Utility {
 
 			if( canonicalPath == null || absolutePath == null || !canonicalPath.equals(new File(absolutePath).getCanonicalPath())
 					|| !isSafeFilePath(canonicalPath) || !isSafeFilePath(absolutePath) )
-				throw new IllegalArgumentException( "Invalid file path"  );
+				return false;
 
-			if( canonicalFile.exists() && !canonicalFile.isFile() && !canonicalFile.isDirectory() )
-				throw new IllegalArgumentException( "Invalid file(type)" );
+			return true;
+			// return ( canonicalFile.exists() && (canonicalFile.isFile() || canonicalFile.isDirectory()) );
 		} catch( Exception ex ) {
-			throw new IllegalArgumentException( ex );
+			return false;
 		}
 	}
 
@@ -275,10 +275,8 @@ public class Utility {
 			serverFile = new File( baseDir, fileName ).getCanonicalFile();
 			String basePath = baseDir.getPath();
 			String targetPath = serverFile.getPath();
-			if( !( targetPath.equals(basePath) || targetPath.startsWith(basePath + File.separator) ) )
+			if( !( targetPath.equals(basePath) || targetPath.startsWith(basePath + File.separator) || isValidateFile(serverFile) ) )
 				return false;
-
-			validateFile( serverFile );
 		} catch( IOException ex ) {
 			throw new IllegalArgumentException( ex );
 		}

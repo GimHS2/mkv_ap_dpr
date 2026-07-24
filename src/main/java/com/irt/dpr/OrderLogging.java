@@ -100,14 +100,13 @@ public class OrderLogging {
 	}
 
 	public Document makeOrderTraceFile( File file, String data ) {
-		if( file == null ) {
+		if( file == null || !Utility.isValidateFile(file) ) {
 			logger.error( "Can't make XML file: invalid file path" );
 			return null;
 		}
 
 		java.io.PrintWriter out = null;
 		try {
-			Utility.validateFile( file );
 			out = new java.io.PrintWriter( file );
 			out.print( data );
 		} catch( java.io.FileNotFoundException fileEx ) {

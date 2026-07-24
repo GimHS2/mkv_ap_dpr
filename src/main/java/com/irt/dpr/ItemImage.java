@@ -210,9 +210,8 @@ public class ItemImage extends com.irt.rbm.ManipulableManagerImpl {
 			}
 
 			Object inputImageObj = recordMap.get( "inputImageFile" );
-			if( !(inputImageObj instanceof File) )
+			if( !(inputImageObj instanceof File) || !Utility.isValidateFile((File)inputImageObj) )
 				throw new IllegalArgumentException( "Invalid input image file." );
-			Utility.validateFile( (File)inputImageObj );
 
 			FileInputStream inputStream = new FileInputStream( (File)inputImageObj );
 			FileOutputStream outputStream = new FileOutputStream( imageFile );

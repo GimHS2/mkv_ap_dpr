@@ -111,11 +111,13 @@ public class OrderXMLUtility {
 	}
 
 	public static void documentWriteFile( java.io.File file, Document document, Logger logger ) {
+		if( file == null || !Utility.isValidateFile(file) )
+			throw new IllegalArgumentException( "invalid file" );
+
 		java.io.PrintWriter out = null;
 		javax.xml.transform.Transformer transformer;
 
 		try {
-			Utility.validateFile( file );
 			out = new java.io.PrintWriter( file );
 			transformer = javax.xml.transform.TransformerFactory.newInstance().newTransformer();
 			transformer.setOutputProperty( "encoding", "UTF-8" );
