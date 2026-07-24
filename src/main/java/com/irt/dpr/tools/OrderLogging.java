@@ -180,19 +180,31 @@ public class OrderLogging {
 		while( normalized.indexOf("..") >= 0 )
 			normalized = normalized.replace("..", "_");
 
-		normalized = normalized.replaceAll("[^A-Za-z0-9._-]", "_");
+		normalized = normalized.replaceAll("[^A-Za-z0-9_-]", "_");
 		if( normalized.length() == 0 )
 			return "EMPTY";
 
 		return normalized;
 	}
 
+	private boolean isAllowedProcessType( String processType ) {
+		if( processType == null ) return false;
+		for( String allowed : processTypes ) {
+			if( processType.equals( allowed ) ) return true;
+		}
+		return false;
+	}
+
 	public File getFile( String processType, String prefix ) {
 		String times = dateFormat.format( new java.util.Date( System.currentTimeMillis() ) );
-		String fullPreFix = getProcessPrefix( processType, sanitizeFileComponent(prefix) );
 
 		File file = null;
 		try {
+			if( !isAllowedProcessType(processType) )
+				throw new IllegalArgumentException( "Invalid process type" );
+
+			String fullPreFix = getProcessPrefix( processType, sanitizeFileComponent(prefix) );
+
 			File baseDir = new File( tempPath );
 			File processDir = new File( baseDir, processType );
 			File candidateFile = new File( processDir, fullPreFix + "_" + times + ".xml" );

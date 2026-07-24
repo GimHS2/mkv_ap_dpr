@@ -217,8 +217,8 @@ public class Utility {
 					|| !isSafeFilePath(canonicalPath) || !isSafeFilePath(absolutePath) )
 				throw new IllegalArgumentException( "Invalid file path"  );
 
-			if( !canonicalFile.exists() || !canonicalFile.canRead() || (!canonicalFile.isFile() && !canonicalFile.isDirectory()) )
-				throw new IllegalArgumentException( "Invalid file(can not read)" );
+			if( canonicalFile.exists() && !canonicalFile.isFile() && !canonicalFile.isDirectory() )
+				throw new IllegalArgumentException( "Invalid file(type)" );
 		} catch( Exception ex ) {
 			throw new IllegalArgumentException( ex );
 		}
