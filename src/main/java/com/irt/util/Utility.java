@@ -214,6 +214,7 @@ public class Utility {
 			String absolutePath = file.getAbsolutePath();
 
 			if( canonicalPath == null || absolutePath == null || !canonicalPath.equals(file.getAbsoluteFile().getPath())
+					|| (!canonicalFile.isFile() && !canonicalFile.isDirectory()) || !canonicalFile.canRead()
 					|| !isSafeFilePath(canonicalPath) || !isSafeFilePath(absolutePath) )
 				return false;
 
@@ -222,6 +223,10 @@ public class Utility {
 		} catch( Exception ex ) {
 			return false;
 		}
+	}
+
+	public static boolean isSafeCodeToken( String code ) {
+		return (code != null && code.length() > 0 && code.matches("^[A-Za-z0-9_-]+$"));
 	}
 
 	public static boolean isSafeFilePath( String path ) {
