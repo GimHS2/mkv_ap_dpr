@@ -210,16 +210,24 @@ public class Utility {
 				return false;
 
 			File canonicalFile = file.getCanonicalFile();
-			String canonicalPath = canonicalFile.getPath();
-			String absolutePath = file.getAbsolutePath();
+			File canonicalAbsoluteFile = file.getAbsoluteFile().getCanonicalFile();
 
-			if( canonicalPath == null || absolutePath == null || !canonicalPath.equals(file.getAbsoluteFile().getPath())
-					|| (!canonicalFile.isFile() && !canonicalFile.isDirectory()) || !canonicalFile.canRead()
-					|| !isSafeFilePath(canonicalPath) || !isSafeFilePath(absolutePath) )
+			String canonicalPath = canonicalFile.getPath();
+			String canonicalAbsolutePath = canonicalAbsoluteFile.getPath();
+
+			if( canonicalPath == null || canonicalAbsolutePath == null )
+				return false;
+
+			if( !canonicalPath.equals(canonicalAbsolutePath) )
+				return false;
+
+			if( !canonicalFile.exists() || (!canonicalFile.isFile() && !canonicalFile.isDirectory()) || !canonicalFile.canRead() )
+				return false;
+
+			if( !isSafeFilePath(canonicalPath) || !isSafeFilePath(canonicalAbsolutePath) )
 				return false;
 
 			return true;
-			// return ( canonicalFile.exists() && (canonicalFile.isFile() || canonicalFile.isDirectory()) );
 		} catch( Exception ex ) {
 			return false;
 		}
